@@ -1,0 +1,3307 @@
+header|#*CDB TEMPLATE*#|<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=$charset">
+<meta name="generator" content="CDB $version with Templates 3.0 RC1">
+<meta name="keywords" content="$bbname,Discuz,Board,Crossday Studio,PHP,MySQL,FORUM">
+<meta name="description" content="$bbname - Powered by Discuz! Board $version">
+<meta name="MSSmartTagsPreventParsing" content="TRUE">
+<meta http-equiv="MSThemeCompatible" content="Yes">
+$url_redirect
+
+<title>$bbname$navtitle</title>
+$css
+<script language="JavaScript">
+function Popup(url, window_name, window_width, window_height) {settings="toolbar=no,location=no,directories=no,"+"status=no,menubar=no,scrollbars=yes,"+"resizable=yes,width="+window_width+",height="+window_height;NewWindow=window.open(url,window_name,settings);}
+function ctlent(obj) {if((event.ctrlKey && window.event.keyCode == 13) || (event.altKey && window.event.keyCode == 83)) {if(validate(this.document.input)) {this.document.input.submit();}}}
+function checkall(form) {for(var i = 0;i < form.elements.length; i++) {var e = form.elements[i];if (e.name != 'chkall') e.checked = form.chkall.checked;}}
+function findobj(n, d) {var p,i,x; if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);} if(!(x=d[n])&&d.all) x=d.all[n]; for(i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n]; for(i=0;!x&&d.layers&&i>d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); return x;}
+function copycode(obj) {var rng = document.body.createTextRange();rng.moveToElementText(obj);rng.scrollIntoView();rng.select();rng.execCommand("Copy");rng.collapse(false);}
+</script>
+
+</head>
+<body>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table width="100%" border="0" cellspacing="$borderwidth" cellpadding="$tablespace">
+<tr><td class="header"><table width="100%" cellpadding="0" cellspacing="0">
+<tr><td class="navtd"><span class="bold">&raquo;</span> $welcome$reglink$loginout$searchlink$memlistlink$memolink$statslink$u2ulink$pluglink$memcplink$cplink$faqlink
+</td><td align="right"><a href="$siteurl"><font class="navtd">返回 $sitename</font></a>
+</td></tr></table></td></tr></table></td></tr></table><br>
+
+<table border="0" width="$tablewidth" cellpadding="0" cellspacing="0" align="center">
+<tr><td align="left" valign="top" rowspan="2"><a href="index.php">$boardlogo</a><br></td>
+<td align="right" valign="top"><font class="mediumtxt">$lastvisittext<br></font></tr>
+<tr>
+<td align="right" valign="bottom" class="mediumtxt">$header_welcome</td></tr></table>
+<br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center" style="table-layout: fixed"> 
+<tr><td class="nav" width="90%" nowrap>&nbsp;<a href="index.php">$bbname</a> $navigation</td>
+<td align="right" width="10%"><a href="#bottom"><img src="$imgdir/arrow_dw.gif" border="0" align="absmiddle"></a></td>        
+</tr></table><br>
+|#*CDB TEMPLATE FILE*#|css|#*CDB TEMPLATE*#|
+<style type="text/css">
+a:link,a:visited	{ text-decoration: none; color: $link }
+a:hover			{ text-decoration: underline }
+select			{ font-family: 宋体; font-size: $fontsize; font-weight: normal; background-color: $altbg1; color: $tabletext }
+body			{ scrollbar-base-color: $altbg1; scrollbar-arrow-color: $bordercolor; font-size: $fontsize; $bgcode }
+table			{ font-family: $font; color: $tabletext; font-size: $fontsize }
+textarea,input,object	{ font-family: $font; font-size: $fontsize; font-weight: normal; background-color: $altbg1; color: $tabletext }
+.bold			{ font-weight: $bold }
+.subject		{ font-size: $fontsize; color: $tabletext; font-family: $font; font-weight: $bold }
+.post			{ font-size: $font3; font-weight: normal; font-family: $font }
+.header			{ color: $headertext; font-family: $font; font-weight: $bold; font-size: $fontsize; $headerbgcode }
+.category		{ font-family: $font; color: $cattext; font-size: $fontsize; $catbgcode }
+.nav			{ font-family: $font; font-weight: $bold; font-size: $fontsize }
+.smalltxt		{ font-size: 12px; color: $tabletext; font-family: Tohoma, Arial, Verdana }
+.mediumtxt		{ font-size: $fontsize; font-family: $font; font-weight: normal; color: $text }
+.navtd			{ font-size: $fontsize; font-family: $font; color: $headertext; text-decoration: none }
+.multi			{ font-family: $font; color: $link; font-size: $fontsize }
+</style>|#*CDB TEMPLATE FILE*#|member_online_row_admin|#*CDB TEMPLATE*#|<tr>
+<td align="center" bgcolor="$altbg1">$online[username]</td>
+<td align="center" bgcolor="$altbg2">$online[time]</td>
+<td align="center" bgcolor="$altbg1">$online[action]</td>
+<td align="center" bgcolor="$altbg2">$online[forum]</td>
+<td align="center" bgcolor="$altbg1">$online[ip]</td>
+</tr>|#*CDB TEMPLATE FILE*#|viewthread_poll_options_view|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg2" width="35%">$thispoll[0]</td>
+<td bgcolor="$altbg2"><table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr><td width="25%">$thispoll[1] ($thisnum)</td>
+<td width="75%"><img src="$imgdir/pollbar-s.gif">$pollbar<img src="$imgdir/pollbar-e.gif"></td>
+</tr></table></td></tr>
+|#*CDB TEMPLATE FILE*#|member_login|#*CDB TEMPLATE*#|
+<form method="post" action="member.php?action=login">
+<input type="hidden" name="referer" value="$referer">
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">会员登录</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名：</td>
+<td bgcolor="$altbg2"><input type="text" name="username" size="25" maxlength="40" tabindex="1"> &nbsp;<span class="smalltxt"><a href="member.php?action=reg">立即注册</a></span></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">密码：</td>
+<td bgcolor="$altbg2"><input type="password" name="password" size="25" tabindex="2"> &nbsp;<span class="smalltxt"><a href="misc.php?action=lostpw">取回密码</a></span></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">界面方案：</td>
+<td bgcolor="$altbg2">$themelist</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">Cookie 时间：</td>
+<td bgcolor="$altbg2"><input type="radio" $year_checked name="cookie_time" value="31536000">一年&nbsp;&nbsp;<input type="radio" $month_checked name="cookie_time" value="2592000">一个月&nbsp;&nbsp;<input type="radio" $day_checked name="cookie_time" value="86400">一天&nbsp;&nbsp;<input type="radio" $hour_checked name="cookie_time" value="3600">一小时&nbsp;&nbsp;<input type="radio" $task_checked name="cookie_time" value=" ">浏览器进程&nbsp;&nbsp;&nbsp;&nbsp;<a href="faq.php?page=usermaint#2" target="_blank">[相关 FAQ]</a></td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="loginsubmit" value="会员登录"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|misc_lostpw|#*CDB TEMPLATE*#|<form method="post" action="misc.php?action=lostpw">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">取回密码</td>
+</tr>
+
+<tr bgcolor="$altbg1">
+<td width="21%">用户名：</td>
+<td><input type="text" name="username" size="25"></td>
+</tr>
+
+<tr bgcolor="$altbg2">
+<td>Email：</td>
+<td><input type="text" name="email" size="25"><br>
+</tr>
+
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="lostpwsubmit" value="提  交"></center>
+</form>
+</table></td></tr></table>
+|#*CDB TEMPLATE FILE*#|member_online|#*CDB TEMPLATE*#|<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td align="center" width="17%">用户名</td>
+<td align="center" width="15%">时间</td>
+<td align="center" width="50%">当前动作</td>
+<td align="center" width="18%">所在论坛</td>
+</tr>
+$onlinemembers
+</table>
+</td></tr></table>
+|#*CDB TEMPLATE FILE*#|member_online_admin|#*CDB TEMPLATE*#|<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td align="center" width="15%">用户名</td>
+<td align="center" width="12%">时间</td>
+<td align="center" width="45%">当前动作</td>
+<td align="center" width="15%">所在论坛</td>
+<td align="center" width="13%">IP地址</td>
+</tr>
+$onlinemembers
+</table>
+</td></tr></table>
+|#*CDB TEMPLATE FILE*#|misc_announcements|#*CDB TEMPLATE*#|
+<br><table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr class="multi"><td>$multipage</td></tr>
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+$announcement_row
+</table></td></tr><tr class="multi"><td>$multipage</td></tr>
+</table><br>
+|#*CDB TEMPLATE FILE*#|misc_announcement_row|#*CDB TEMPLATE*#|
+<tr><td align="center" class="header"><a name="#$announcement[id]"></a><span class="bold">&lt;&lt; $announcement[subject] &gt;&gt;</span></td></tr>
+<tr><td bgcolor="$altbg2"><br>$announcement[message]<br><br></td></tr>
+<tr><td bgcolor="$altbg1"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td><span class="bold">发布人：</span><a href="member.php?action=viewpro&username=$encodeauthor">$announcement[author]</a></td>
+<td align="right"><span class="bold">起始时间：</span>$announcestart &nbsp; &nbsp; <span class="bold">结束时间：</span>$announceend</td></tr></table></td></tr>
+<tr><td height="1" bgcolor="$altbg2"></td></tr>
+|#*CDB TEMPLATE FILE*#|misc_stats_main|#*CDB TEMPLATE*#|
+<br><table cellspacing="0" cellpadding="0" border="0" width="85%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr bgcolor="$altbg2"><td><span class="bold">会员统计：</span><br>
+注册会员：<span class="bold">$members</span> 人 &nbsp;|&nbsp; 管理成员：<span class="bold">$admins</span> 人 &nbsp;|&nbsp; 新会员：<span class="bold">$lastmember</span> &nbsp;|&nbsp; 今日论坛之星 <span class="bold">$bestmem</span> - 共发帖 <span class="bold">$bestmempost</span> 篇<br>
+发贴会员：<span class="bold">$mempost</span> 人 &nbsp;|&nbsp; 未发贴会员：<span class="bold">$memnonpost</span> 人 &nbsp;|&nbsp; 发帖会员占会员总数的 <span class="bold">$mempostpercent%</span> &nbsp;|&nbsp; 平均每人发帖：<span class="bold">$mempostavg</span> 篇
+</td></tr></table></td></tr></table>
+
+<br><table cellspacing="0" cellpadding="0" border="0" width="85%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr bgcolor="$altbg2"><td><span class="bold">论坛统计：</span><br>
+论坛数：<span class="bold">$forums</span> 个 &nbsp;|&nbsp; 主题：<span class="bold">$threads</span> 篇 &nbsp;|&nbsp; 贴子：<span class="bold">$posts</span> 篇 &nbsp;|&nbsp; 平均每个主题被回复：<span class="bold">$threadreplyavg</span> 篇<br>
+平均每日新增贴子：<span class="bold">$postsaddavg</span> 篇，会员：<span class="bold">$membersaddavg</span> 人 &nbsp;|&nbsp; 最近 24 小时新增贴子：<span class="bold">$postsaddtoday</span> 篇，会员：<span class="bold">$membersaddtoday</span> 人)<br>
+最热门的论坛：<span class="bold"><a href="forumdisplay.php?fid=$hotforum[fid]">$hotforum[name]</a></span> - 共有主题 <span class="bold">$hotforum[threads]</span> 篇，贴子 <span class="bold">$hotforum[posts]</span> 篇 &nbsp;|&nbsp; Discuz! 论坛活跃指数：<span class="bold">$activeindex</span><br>
+</td></tr></table></td></tr></table>
+
+<br><table cellspacing="0" cellpadding="0" border="0" width="85%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr bgcolor="$altbg2"><td><span class="bold">流量概况：</span><br>
+总页面流量：<span class="bold">$stats_total[hits]</span> 页 &nbsp;|&nbsp; 共计来访：<span class="bold">$stats_total[visitors]</span> 人次 - 会员：<span class="bold">$stats_total[members]</span> 人次，游客：<span class="bold">$stats_total[guests]</span> 人次 &nbsp;|&nbsp; 平均每人浏览：<span class="bold">$pageviewavg</span> 页<br>
+最大访问量 - 月份：<span class="bold">$maxmonth_year</span> 年 <span class="bold">$maxmonth_month</span> 月，页面流量 <span class="bold">$maxmonth</span> 页 &nbsp;|&nbsp; 
+时段：<span class="bold">$maxhourfrom</span> 时 ～ <span class="bold">$maxhourto</span> 时，页面流量 <span class="bold">$maxhour</span> 页
+</td></tr></table></td></tr></table>
+
+<br><table cellspacing="0" cellpadding="0" border="0" width="85%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr bgcolor="$altbg2"><td><span class="bold">月份流量：</span><br>
+<table border="0" cellspacing="0" cellpadding="$tablespace" width="610">
+$statsbar_month
+</table></td></tr></table></td></tr></table><br>
+|#*CDB TEMPLATE FILE*#|misc_stats|#*CDB TEMPLATE*#|
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr><td class="header">论坛统计
+</td></tr><tr bgcolor="$altbg1"><td>
+
+<br><table cellspacing="0" cellpadding="0" border="0" width="85%" align="center">
+<tr><td bgcolor="$bordercolor"><table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr bgcolor="$altbg2"><td align="center">
+<a href="misc.php?action=stats">[ 基本概况 ]</a> &nbsp; <a href="misc.php?action=stats&type=week">[ 星期流量 ]</a> &nbsp; 
+<a href="misc.php?action=stats&type=hour">[ 时段流量 ]</a> &nbsp; <a href="misc.php?action=stats&type=agent">[ 客户软件 ]</a> &nbsp; 
+<a href="misc.php?action=stats&type=threads">[ 主题排行 ]</a> &nbsp; <a href="misc.php?action=stats&type=member">[ 会员排行 ]</a></td></tr>
+</table></td></tr></table><br>
+
+$statsdata
+
+</td></tr></table></td></tr></table></td></tr></table>
+|#*CDB TEMPLATE FILE*#|misc_stats_agent|#*CDB TEMPLATE*#|
+<br><table cellspacing="0" cellpadding="0" border="0" width="85%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr bgcolor="$altbg2"><td><span class="bold">操作系统：</span><br>
+<table border="0" cellspacing="0" cellpadding="$tablespace" width="610">
+$statsbar_os
+</table></td></tr></table></td></tr></table>
+
+<br><table cellspacing="0" cellpadding="0" border="0" width="85%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr bgcolor="$altbg2"><td><span class="bold">浏览器：</span><br>
+<table border="0" cellspacing="0" cellpadding="$tablespace" width="610">
+$statsbar_browser
+</table></td></tr></table></td></tr></table><br>
+|#*CDB TEMPLATE FILE*#|misc_stats_member|#*CDB TEMPLATE*#|
+<table cellspacing="0" cellpadding="0" border="0" width="85%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr><td bgcolor="$altbg1"><table border="0" cellspacing="0" cellpadding="$tablespace" width="98%" align="center">
+<tr><td align="center" bgcolor="$altbg2" colspan="2" class="bold">总{$credittitle}排行</td><td width="2%"></td>
+<td align="center" bgcolor="$altbg2" colspan="2" class="bold">总发帖排行</td><td width="2%"></td>
+<td align="center" bgcolor="$altbg2" colspan="2" class="bold">本月发帖排行</td><td width="2%"></td>
+<td align="center" bgcolor="$altbg2" colspan="2" class="bold">今日发帖排行</td></tr>
+$members
+</td></table></td></tr></table></td></tr></table><br>
+|#*CDB TEMPLATE FILE*#|misc_stats_threads|#*CDB TEMPLATE*#|
+<table cellspacing="0" cellpadding="0" border="0" width="85%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr><td bgcolor="$altbg1"><table border="0" cellspacing="0" cellpadding="$tablespace" width="99%" align="center">
+<tr><td align="center" bgcolor="$altbg2" colspan="2" class="bold">被浏览最多的主题</td><td width="1%"></td>
+<td align="center" bgcolor="$altbg2" colspan="2" class="bold">被回复最多的主题</td></tr>
+$threads
+</td></table></td></tr></table></td></tr></table><br>
+|#*CDB TEMPLATE FILE*#|misc_stats_week|#*CDB TEMPLATE*#|
+<br><table cellspacing="0" cellpadding="0" border="0" width="85%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr bgcolor="$altbg2"><td><span class="bold">星期流量：</span><br>
+<table border="0" cellspacing="0" cellpadding="$tablespace" width="610">
+$statsbar_week
+</table></td></tr></table></td></tr></table><br>
+|#*CDB TEMPLATE FILE*#|misc_stats_hour|#*CDB TEMPLATE*#|
+<br><table cellspacing="0" cellpadding="0" border="0" width="85%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr bgcolor="$altbg2"><td><span class="bold">时段流量：</span><br>
+<table border="0" cellspacing="0" cellpadding="$tablespace" width="610">
+$statsbar_hour
+</table></td></tr></table></td></tr></table><br>
+|#*CDB TEMPLATE FILE*#|member_online_row|#*CDB TEMPLATE*#|
+<tr>
+<td align="center" bgcolor="$altbg1">$online[username]</td>
+<td align="center" bgcolor="$altbg2">$online[time]</td>
+<td align="center" bgcolor="$altbg1">$online[action]</td>
+<td align="center" bgcolor="$altbg2">$online[forum]</td>
+</tr>|#*CDB TEMPLATE FILE*#|index_whosonline|#*CDB TEMPLATE*#|
+<tr>
+<td colspan="6" class="category">
+<table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr><td style="color: $cattext"><span class="bold"><a href="member.php?action=online" style="color: $cattext">在线用户</a></span> - $memonmsg</td>
+<td align="right">$oldetaillink</td></tr></table>
+</tr>
+<tr>
+<td bgcolor="$altbg1" align="center" valign="top"><img src="$imgdir/online.gif"></td>
+<td bgcolor="$altbg2" colspan="5" onMouseOver ="this.style.backgroundColor='$altbg1'" onMouseOut ="this.style.backgroundColor='$altbg2'">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" align="center">
+<tr><td colspan="6"><img src="$imgdir/online_admin.gif"> 论坛管理员 &nbsp; &nbsp; &nbsp;<img src="$imgdir/online_moderator.gif"> 版主 &nbsp; &nbsp; &nbsp;<img src="$imgdir/online_member.gif"> 会员 &nbsp; &nbsp; &nbsp;<img src="$imgdir/online_guest.gif"> 游客</td></tr>
+$memberlist
+</table></td></tr>
+|#*CDB TEMPLATE FILE*#|index_forumlink|#*CDB TEMPLATE*#|
+<tr>
+<td colspan="6" class="category"><span class="bold">≡ 联盟论坛 ≡</span></td>
+</tr>
+$forumlink_row
+|#*CDB TEMPLATE FILE*#|index_forumlink_row|#*CDB TEMPLATE*#|
+<tr>
+<td bgcolor="$altbg1" align="center" valign="middle"><img src="$imgdir/forumlink.gif"></td>
+<td bgcolor="$altbg2" colspan="4" valign="middle" onMouseOver ="this.style.backgroundColor='$altbg1'" onMouseOut ="this.style.backgroundColor='$altbg2'"><a href="$flink[url]" target="_blank"><span class="bold">$flink[name]</span></a><br>$flink[note]</td>
+<td bgcolor="$altbg2" align="center" valign="middle"><a href="$flink[url]" target="_blank"><img src="$flink[logo]" border="0" alt="$flnk[note]"></a></td>
+</tr>
+|#*CDB TEMPLATE FILE*#|index_forumlink_noimg_row|#*CDB TEMPLATE*#|
+<tr>
+<td bgcolor="$altbg1" align="center" valign="middle"><img src="$imgdir/forumlink.gif"></td>
+<td bgcolor="$altbg2" colspan="5" valign="middle" style="word-break: keep-all" onMouseOver="this.style.backgroundColor='$altbg1'" onMouseOut="this.style.backgroundColor='$altbg2'">$forumlink_content</td>
+</tr>
+|#*CDB TEMPLATE FILE*#|faq_usermaint|#*CDB TEMPLATE*#|
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr><td width="100%" class="header">用户须知</td></tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+<ul>
+<li><a href="#1">我必须要注册吗？</a></li>
+<li><a href="#2">Discuz! 论坛使用 Cookies吗？</a></li>
+<li><a href="#3">如何使用签名？</a></li>
+<li><a href="#4">如何使用个性化的头像？</a></li>
+<li><a href="#5">如果我遗忘了密码，我该怎么办？</a></li>
+<li><a href="#6">什么是“短消息”？</a></li>
+</td>
+</tr>
+</table></td></tr></table>
+
+<br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">我必须要注册吗？</td><a name=#1></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;这取决于管理员如何设置 Discuz! 论坛的参数，您甚至有可能必须在注册成正式用户
+后后才能浏览贴子。当然，在通常情况下，您必须是正式用户才能发新贴和回复已有贴子。请 <a href="member.php?action=reg">点击这里</a>
+免费注册成为我们的新用户！<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;强烈建议您注册，这样会得到很多以游客身份无法实现的功能。
+</td>
+</tr>
+</table></td></tr></table>
+        
+<br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">Discuz! 论坛使用 Cookies 吗？</td><a name=#2></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;Discuz! 采用 Session+Cookie 的双重方式保存用户信息。Cookies 的使用可以为
+您访问论坛带来一系列的方便和好处。但如果在个别服务器或客户端 Cookies 无法读取或被禁用，Discuz! 也可以
+通过 Session 来存取登录信息，以保证各种环境下论坛的正常使用。Cookies 无法使用的情况下，论坛将不能
+保存登录信息至下次访问，此时您需要输入用户名和密码重新登录。<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;在登录页面中，您可以选择 Cookie 记录时间，在该时间范围内您打开浏览器访问
+论坛将始终保持您上一次访问时的登录状态。如果超过这个时间不登录论坛，Cookies 就会自动清除。出于安全考虑，
+如果您在公共计算机访问论坛，建议选择“浏览器进程”或“一小时”项，这样将可以彻底消除您的登录资料(虽然
+是加密的)泄露给他人的可能。<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;当然，无论您选择哪个 Cookie 时间，关闭论坛之前使用“退出”来清除 Cookies
+都是比较安全做法。<a href="member.php?action=logout">点击这里</a> 退出论坛。
+</td>
+</tr>
+</table></td></tr></table>
+        
+<br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">如何使用签名？</td><a name=#3></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;签名是加在您发表的贴子下面的小段文字，注册之后，您就可以设置自己的个性签名
+了。<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="memcp.php">点击这里</a> 进入控制面板，在签名框中输入签名文字，
+并确认，这样系统会自动选中您登录后发帖页面的显示签名选项，您的的签名就会在贴子中自动显示了。
+</td>
+</tr>
+</table></td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">如何使用个性化的头像？</td><a name=#4></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;同样在 <a href="memcp.php">控制面板</a> 中，有一处“头像”选项。头像是显示
+在您用户名下面的小图像，使用头像可能需要一定的{$credittitle}，否则将不会显示出来。详情请查询
+<a href="faq.php?page=misc#3">本论坛的级别设定</a>，一般头像图像宽度应控制在 150 像素以下，以免影响界面美观。
+</td>
+</tr>
+</table></td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">如果我遗忘了密码，我该怎么办？</td><a name=#5></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;如果注册时填写的邮箱真实有效，就不用担心忘记了用户密码， <a href="misc.php?action=lostpw">取回密码</a> 功能可以帮您把忘记的密码发送到注册时填写的邮箱中。
+</td>
+</tr>
+</table></td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">什么是“短消息”？</td><a name=#6></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;“短消息”是论坛用户间交流的工具，您可以通过 Discuz! 论坛发送和接收短消息。<a href="###" onclick="Popup('u2u.php?sid=$sid', 'u2u', 580, 450);">收件箱</a> 或 <a href="memcp.php">个人资料</a> 中提供了短消息的收发服务。
+</td>
+</tr>
+</table></td></tr></table>
+|#*CDB TEMPLATE FILE*#|index_newu2upopup|#*CDB TEMPLATE*#|
+<bgsound src="images/newu2u.wav" border="0">
+<script language="JavaScript" src="u2upopup.js"></script>
+<div id="u2upopup" style="position: absolute; visibility: hidden; height: 1; width: 1; top: 50; left: 50">
+<table width="400" height="246" bgcolor="$altbg1" style="border: 1 outset $altbg2">
+<tr><td><table width="378" height="223" bgcolor="$altbg2" align="center" style="border: 1 inset $headercolor">
+<tr><td align="center" valign="middle">
+<p class="bold">==　您有 $newu2unum 条未被提示过的新短消息 ==</p>
+<table cellspacing="6" cellpadding="0" border="0" width="95%" align="center"> 
+$u2udetail</table>
+<p>[ <a href="###" onclick="Popup('u2u.php?sid=$sid', 'u2u', 580, 450);closePopup();">查看短消息详情</a> ] - [ <a href="###" onclick="closePopup()">不再提示以上消息</a> ]</p>
+</td></tr></table></td></tr></table></div>
+|#*CDB TEMPLATE FILE*#|index|#*CDB TEMPLATE*#|
+<table cellspacing="$tablespace" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr class="mediumtxt"><td width="55%">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr><td width="22"><img src="$imgdir/$statusicon"></td><td valign="middle">您的$credittitle <span class="bold">$credit</span> $creditunit / 级别 <span class="bold">$grouptitle</span></td></tr>
+<tr><td width="22"><img src="$imgdir/announcement.gif"></td><td valign="middle" nowrap>论坛公告：$announcements</td></tr></table>
+</td><td align="right" width="45%" nowrap>
+共有 <span class="bold">$threads</span> 篇主题 / <span class="bold">$posts</span> 篇贴子 / <span class="bold">$members</span> 位会员<br>
+<a href="misc.php?action=search&srchfrom=$newthreads&searchsubmit=yes">查看新帖</a> | <a href="misc.php?action=markread">标记已读</a> $mytopicslink| 欢迎新会员 $memhtml<br>
+</td></tr></table>
+$index_news
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%" align="center"> 
+<tr>
+<td width="6%" class="header">&nbsp;</td>
+<td width="46%" class="header" align="center">论坛</td>
+<td width="8%" class="header" align="center">主题</td>
+<td width="8%" class="header" align="center">贴数</td>
+<td width="15%" class="header" align="center">最后发表</td>
+<td width="17%" class="header" align="center">版主</td>
+</tr>
+$forumlist
+$forumlink
+$whosonline
+</table>
+</td></tr></table><br><br>
+<table width="$tablewidth" align="center">
+<tr><td align="center" class="mediumtxt">
+<img src="$imgdir/red_forum.gif" align="absmiddle">&nbsp; 有新贴的论坛&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="$imgdir/forum.gif" align="absmiddle">&nbsp; 无新贴的论坛</td></tr></table><br>
+$newu2upopup
+|#*CDB TEMPLATE FILE*#|index_category|#*CDB TEMPLATE*#|<tr> 
+<td colspan="6" class="category"><a href="index.php?gid=$group[fid]"><font color="$cattext"><span class="bold">$group[name]</span></font></a></td> 
+</tr>|#*CDB TEMPLATE FILE*#|index_forum|#*CDB TEMPLATE*#|<tr align="center">
+<td bgcolor="$altbg1">$folder</td>
+<td bgcolor="$altbg2" align="left" onMouseOver ="this.style.backgroundColor='$altbg1'" onMouseOut ="this.style.backgroundColor='$altbg2'">
+$forum[icon]<a href="forumdisplay.php?fid=$forum[fid]"><span class="bold">$forum[name]</span></a>
+<br>$forum[description]</td>
+<td bgcolor="$altbg1">$forum[threads]</td>
+<td bgcolor="$altbg2">$forum[posts]</td>
+<td bgcolor="$altbg1">$lastpostrow</td>
+<td bgcolor="$altbg2" style="word-break: keep-all">$forum[moderator]</td>
+</tr>
+|#*CDB TEMPLATE FILE*#|forumdisplay|#*CDB TEMPLATE*#|
+<table width="$tablewidth" cellspacing="0" cellpadding="$tablespace" align="center">
+<tr class="mediumtxt"><td>(版主：<span class="bold">$moderatedby</span>)</td><td align="right"><img src="$imgdir/showdigist.gif" border="0" align="absmiddle"> $showthread$delthread</td></tr>
+<tr><td></td></tr>
+</table>
+$forumwhosonline
+$subforums
+<form method="post" name="delthread" action="topicadmin.php?action=delthread&fid=$fid&page=$page">
+<table width="$tablewidth" cellspacing="0" cellpadding="0" align="center">
+<tr><td class="multi">$multipage</td>
+<td align="right">
+<a href="post.php?action=newthread&fid=$fid"><img src="$imgdir/newtopic.gif" border="0"></a>$newpolllink
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center" bgcolor="$bordercolor"><tr><td>
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%" style="table-layout: fixed; word-wrap: break-word">
+<tr class="header">
+<td width="4%">&nbsp;</td>
+<td width="4%">&nbsp;</td>
+<td width="47%" align="center">主题</td>
+<td width="14%" align="center">作者</td>
+<td width="6%" align="center">回复</td>
+<td width="6%" align="center">浏览</td>
+<td width="19%" align="center">最后发表</td>
+</tr>
+$threadlist
+</table></td></tr></table>
+
+<table width="$tablewidth" cellspacing="0" cellpadding="0" align="center">
+<tr><td class="multi" valign="top">$multipage</td><td align="right"><br>
+<a href="post.php?action=newthread&fid=$fid"><img src="$imgdir/newtopic.gif" border="0"></a>$newpolllink
+</td></tr></table></form>
+
+$fastpost_newthread<br>
+
+<form method="post" action="forumdisplay.php?fid=$fid">
+<table width="$tablewidth" cellspacing="0" cellpadding="0" align="center"><tr><td align="left" class="mediumtxt">
+<span class="bold">论坛跳转：</span>
+<select onchange="if(this.options[this.selectedIndex].value != '') {
+window.location=('forumdisplay.php?fid='+this.options[this.selectedIndex].value+'&sid=$sid') }">
+$forumselect
+</select>
+</td><td align="right" class="mediumtxt">
+查看 <select name="filter">
+<option value="digist" $check[digist]>精华贴子</option>
+<option value="0" $check[0]>所有贴子</option>
+<option value="86400" $check[86400]>1 天以来</option>
+<option value="172800" $check[172800]>2 天以来</option>
+<option value="604800" $check[604800]>1 周以来</option>
+<option value="2592000" $check[2592000]>1 个月以来</option>
+<option value="7948800" $check[7948800]>3 个月以来</option>
+<option value="15897600" $check[15897600]>6 个月以来</option>
+<option value="31536000" $check[31536000]>1 年以来</option>
+</select>&nbsp;&nbsp;<select name="ascdesc">
+<option value="ASC" $check[asc]>按升序排列</option>
+<option value="DESC" $check[desc]>按降序排列</option>
+</select>&nbsp;
+<input type="submit" value="查 看">
+</td></tr></table></form><br>
+<table width="365" align="center">
+<tr class="mediumtxt"><td><img src="$imgdir/red_folder.gif" alt="新贴" align="absmiddle">&nbsp; 有新贴</td><td>(&nbsp;<img src="$imgdir/hot_red_folder.gif" alt="热点话题" align="absmiddle">&nbsp; 多于 $hottopic 篇回复 )</td><td><img src="$imgdir/lock_folder.gif" alt="关闭" align="absmiddle">&nbsp; 关闭的主题</td></tr>
+<tr class="mediumtxt"><td><img src="$imgdir/folder.gif" alt="打开" align="absmiddle">&nbsp; 没有新帖</td><td>(&nbsp;<img src="$imgdir/hot_folder.gif" alt="焦点话题" align="absmiddle">&nbsp; 多于 $hottopic 篇回复 )</td><td></td></tr>
+</table><br>
+|#*CDB TEMPLATE FILE*#|forumdisplay_fastpost|#*CDB TEMPLATE*#|
+<script language="JavaScript">
+var postmaxchars = $maxpostsize;
+var isadmin = $isadmin;
+function validate(theform) {
+        if (theform.subject.value == "") {
+                alert("请完成标题和内容栏。");
+                return false; }
+        if (postmaxchars != 0 && isadmin != 1) {
+                if (theform.message.value.length > $maxpostsize) {
+                        alert("您的贴子长度超过限制\n\n当前长度："+theform.message.value.length+" 字符\n系统允许：$maxpostsize 字符");
+                        return false; }
+                else { return true; }
+        } else { return true; }
+}
+</script>
+<form method="post" name="input" action="post.php?action=newthread&fid=$fid" $enctype onSubmit="return validate(this)">
+<input type="hidden" name="topicsubmit" value="submit">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center" bgcolor="$bordercolor"><tr><td>
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr><td colspan="2" class="header">快速发新话题</td></tr>
+<tr>
+<td width="18%" bgcolor="$altbg1">主题：</td>
+<td width="82%" bgcolor="$altbg2"><input type="text" name="subject" size="80" value="" tabindex="1"></td>
+</tr>
+<tr>
+<td width="18%" bgcolor="$altbg1" valign="top">选项：<br>
+<input type="checkbox" name="parseurloff" value="1"> 禁用 URL 识别<br>
+<input type="checkbox" name="smileyoff" value="1" $smileyoffcheck> 禁用 Smilies<br>
+<input type="checkbox" name="bbcodeoff" value="1" $codeoffcheck> 禁用 Discuz! 代码<br>
+<input type="checkbox" name="usesig" value="1" $usesigcheck> 使用个人签名<br>
+<input type="checkbox" name="emailnotify" value="1"> 接收新回复邮件通知
+</td>
+<td width="82%" bgcolor="$altbg2" valign="middle"><textarea rows="7" cols="90" name="message" onKeyDown="javascript: ctlent();" tabindex="2"></textarea><br>
+<input type="submit" name="topicsubmit" value="发表贴子" tabindex="3">&nbsp;&nbsp;&nbsp;
+<input type="submit" name="previewpost" value="预览贴子" tabindex="4">&nbsp;&nbsp;&nbsp;
+<input type="reset" name="topicsreset" value="清空内容" tabindex="5">&nbsp;&nbsp;&nbsp;[完成后可按 Ctrl+Enter 发布]</td>
+</tr></table></td></tr></table></form>
+|#*CDB TEMPLATE FILE*#|forumdisplay_subforums|#*CDB TEMPLATE*#|
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%" align="center"> 
+<tr>
+<td width="6%" class="header">&nbsp;</td>
+<td width="46%" class="header" align="center">论坛</td>
+<td width="8%" class="header" align="center">主题</td>
+<td width="8%" class="header" align="center">贴数</td>
+<td width="15%" class="header" align="center">最后发表</td>
+<td width="17%" class="header" align="center">版主</td>
+</tr>
+$forumlist
+</table>
+</td></tr></table><br>
+<br>|#*CDB TEMPLATE FILE*#|forumdisplay_subforum|#*CDB TEMPLATE*#|<tr align="center">
+<td bgcolor="$altbg1">$folder</td>
+<td bgcolor="$altbg2" align="left" onMouseOver ="this.style.backgroundColor='$altbg1'" onMouseOut ="this.style.backgroundColor='$altbg2'">
+$forum[icon]<a href="forumdisplay.php?fid=$forum[fid]"><span class="bold">$forum[name]</span></a>
+<br>$forum[description]</td>
+<td bgcolor="$altbg1">$forum[threads]</td>
+<td bgcolor="$altbg2">$forum[posts]</td>
+<td bgcolor="$altbg1">$lastpostrow</td>
+<td bgcolor="$altbg2" style="word-break: keep-all">$forum[moderator]</td>
+</tr>|#*CDB TEMPLATE FILE*#|forumdisplay_thread|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg2" align="center">$folder</td>
+<td bgcolor="$altbg1" align="center">$thread[icon]</td>
+<td bgcolor="$altbg2" onMouseOver ="this.style.backgroundColor='$altbg1'" onMouseOut ="this.style.backgroundColor='$altbg2'">
+$prefix<a href="viewthread.php?tid=$thread[tid]">$thread[subject]</a>$multipage2</td>
+<td bgcolor="$altbg1" align="center">$authorinfo</td>
+<td bgcolor="$altbg2" align="center">$thread[replies]</td>
+<td bgcolor="$altbg1" align="center">$thread[views]</td>
+<td bgcolor="$altbg2">$lastpostrow</td>
+</tr>|#*CDB TEMPLATE FILE*#|forumdisplay_nothreads|#*CDB TEMPLATE*#|<tr><td colspan="8" bgcolor="$altbg1">本论坛或指定的范围内尚无主题。</td></tr>
+|#*CDB TEMPLATE FILE*#|viewthread_poll_options|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg2" colspan="2"><input type="radio" name="postopnum" value="$pnum" $checked> $thispoll[0]</td>
+</tr>
+<input type="hidden" name="currpoll" value="$thread[pollopts]">|#*CDB TEMPLATE FILE*#|viewthread_poll|#*CDB TEMPLATE*#|<form method="post" action="topicadmin.php?action=votepoll&fid=$fid&tid=$tid">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr><td class="header" colspan="2">投票标题：$thread[subject]</td></tr>
+$pollhtml
+</table>
+</td></tr></table>
+
+$buttoncode
+</form>
+|#*CDB TEMPLATE FILE*#|viewthread_post|#*CDB TEMPLATE*#|
+<a name="pid$post[pid]">
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%" style="table-layout: fixed; word-wrap: break-word">
+<tr bgcolor="$thisbg">
+<td valign="top" width="21%">$ip<span class="bold"">$post[author]</span><br>
+$showtitle<br>$stars<br>
+$avatar<br>
+$credittitle $post[credit] $creditunit<br>
+发帖 $post[postnum] 篇<br>
+注册 $tharegdate
+$location<br>
+$personstatus</td>
+<td height="100%">
+<table height="100%" width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;word-wrap: break-word">
+<tr><td valign="top">
+<font class="subject"><span class="bold">$post[subject]</span></font>$post[message]
+</td></tr></table>
+</td></tr>
+<tr bgcolor="$thisbg"><td valign="middle" class="smalltxt">$delete $post[icon] $poston</td><td valign="middle">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr class="smalltxt"><td align="left">
+$profile$email$site$search$u2u$oicq$icq$yahoo&nbsp;
+</td><td align="right">
+$edit$repquote$reportlink$karma</td></tr></table>
+</td></tr>
+</table>
+</td></tr></table></a>
+|#*CDB TEMPLATE FILE*#|viewthread|#*CDB TEMPLATE*#|$poll
+<form name="delpost" method="post" action="topicadmin.php?action=delpost&fid=$fid&tid=$tid&page=$page">
+<table width="$tablewidth" cellspacing="0" cellpadding="0" align="center">
+<tr><td class="multi">$multipage$creditsrequire</td><td align="right">
+<a href="post.php?action=newthread&fid=$fid"><img src="$imgdir/newtopic.gif" border="0"></a>$newpolllink$replylink
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header"><td width="21%">作者：</td>
+
+<td><table cellspacing="0" cellpadding="0" border="0" width="100%" style="table-layout: fixed; word-wrap: break-word">
+<tr style="color: $headertext"><td width="80%" class="bold" nowrap>主题：$thread[subject]</td>
+<td align="right" nowrap>$nohllink<a href="viewthread.php?fid=$fid&tid=$tid&goto=nextoldset" style="color: $headertext;font-weight: normal">上一主题</a> 
+<a href="viewthread.php?fid=$fid&tid=$tid&goto=nextnewset" style="color: $headertext;font-weight: normal">下一主题</a></td>
+</tr></table></td>
+
+</tr></table></td></tr></table>
+
+$posts
+
+<table width="$tablewidth" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td class="multi" valign="top">$multipage</td><td align="right"><br>
+<a href="post.php?action=newthread&fid=$fid"><img src="$imgdir/newtopic.gif" border="0"></a>$newpolllink$replylink
+</td></tr></table></form>
+
+<br><table width="310" cellspacing="0" cellpadding="0" align="center">
+<td align="center" bgcolor="$bordercolor" width="30%">
+<table border="0" cellspacing="$borderwidth" width="100%">
+<tr><td bgcolor="$altbg2" class="mediumtxt" align="center">
+<a href="viewthread.php?fid=$fid&tid=$tid&action=printable" class="mediumtxt">可打印版本</a> | 
+<a href="topicadmin.php?action=emailfriend&tid=$tid" class="mediumtxt">推荐给朋友</a> | 
+<a href="memcp.php?action=subscriptions&subadd=$tid" class="mediumtxt">订阅主题</a> | 
+<a href="memcp.php?action=favorites&favadd=$tid" class="mediumtxt">收藏主题</a>
+</td></tr></table></td></tr></table><br>
+$fastpost_viewthread<br>
+<table width="$tablewidth" cellspacing="0" cellpadding="0" align="center">
+<tr><td align="left">$forumjump</td><td align="right">$modoptions</td>
+</tr></table><br><br>
+|#*CDB TEMPLATE FILE*#|viewthread_fastpost|#*CDB TEMPLATE*#|
+<script language="JavaScript">
+var postmaxchars = $maxpostsize;
+var isadmin = $isadmin;
+function validate(theform) {
+        if (theform.message.value == "" && theform.subject.value == "") {
+                alert("请完成标题或内容栏。");
+                return false; }
+        if (postmaxchars != 0 && isadmin != 1) {
+                if (theform.message.value.length > $maxpostsize) {
+                        alert("您的贴子长度超过限制\n\n当前长度："+theform.message.value.length+" 字符\n系统允许：$maxpostsize 字符");
+                        return false; }
+                else { return true; }
+        } else { return true; }
+}
+</script>
+<form method="post" name="input" action="post.php?action=reply&fid=$fid&tid=$tid" $enctype onSubmit="return validate(this)">
+<input type="hidden" name="replysubmit" value="submit">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center" bgcolor="$bordercolor"><tr><td>
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr><td colspan="2" class="header">快速回复主题</td></tr>
+<tr>
+<td width="18%" bgcolor="$altbg1">主题：</td>
+<td width="82%" bgcolor="$altbg2"><input type="text" name="subject" size="80" value="" tabindex="1">&nbsp;&nbsp;(可选)</td>
+</tr>
+<tr>
+<td width="18%" bgcolor="$altbg1" valign="top">选项：<br><br>
+<input type="checkbox" name="parseurloff" value="1"> 禁用 URL 识别<br>
+<input type="checkbox" name="smileyoff" value="1" $smileyoffcheck> 禁用 Smilies<br>
+<input type="checkbox" name="bbcodeoff" value="1" $codeoffcheck> 禁用 Discuz! 代码<br>
+<input type="checkbox" name="usesig" value="1" $usesigcheck> 使用个人签名<br>
+</td>
+<td width="82%" bgcolor="$altbg2"><textarea rows="7" cols="90" name="message" onKeyDown="javascript: ctlent();" tabindex="2"></textarea><br>
+<input type="submit" name="replysubmit" value="发表回复" tabindex="3">&nbsp;&nbsp;&nbsp;
+<input type="submit" name="previewpost" value="预览贴子" tabindex="4">&nbsp;&nbsp;&nbsp;
+<input type="reset" name="topicsreset" value="清空内容" tabindex="5">&nbsp;&nbsp;&nbsp;[完成后可按 Ctrl+Enter 发布]</td>
+</tr></table></td></tr></table></form>
+|#*CDB TEMPLATE FILE*#|faq_messages_smilierow|#*CDB TEMPLATE*#|<tr>
+<td width="25%" bgcolor="$altbg2" align="center">$smilie[code]</td>
+<td width="75%" bgcolor="$altbg2" align="center"><img src="$smdir/$smilie[url]"></td>
+</tr>
+|#*CDB TEMPLATE FILE*#|faq_misc|#*CDB TEMPLATE*#|<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr>
+<td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td width="100%" class="header">其他问题</td>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+<ul>
+<li><a href="#1">能说明一下 Discuz! 代码的用法吗？</a></li>
+<li><a href="#2">普通用户如何成为版主？</a></li>
+<li><a href="#3">我在 $bbname 具有哪些权限？</a></li>
+</td>
+</tr>
+</table>
+</table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr>
+<td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td width="100%" class="header">能说明一下 Discuz! 代码的用法吗？</td>
+<a name=#1></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;您可以使用 Discuz! 代码--一个 HTML 代码的简化版本，来简化对贴子显示格式的控制。<br><br>
+<ol type="1">
+<li>[b]粗体文字 Abc[/b] &nbsp; 效果：<b>粗体文字 Abc</b> （粗体字）<br><br></li>
+<li>[i]斜体文字 Abc[/i] &nbsp; 效果：<i>斜体文字 Abc</i> （斜体字）<br><br></li>
+<li>[u]下划线文字 Abc[/u] &nbsp; 效果：<u>下划线文字 Abc</u> （下划线）<br><br></li>
+<li>[fly]飞行文字 Abc[/fly] &nbsp; （飞行文字） &nbsp; 效果：<marquee width="90%" behavior="alternate" scrollamount="3">飞行文字 Abc</marquee><br><br></li>
+<li>[color=red]红颜色[/color] &nbsp; 效果：<font color="red">红颜色</font> （改变文字颜色）<br><br></li>
+<li>[size=3]文字大小为 3[/size] &nbsp; 效果：<font size="3">文字大小为 3</font> （改变文字大小）<br><br></li>
+<li>[font=仿宋]字体为仿宋[/font] &nbsp; 效果：<font face"仿宋">字体为仿宋</font> （改变字体）<br><br></li>
+<li>[align=Center]内容居中[/align] &nbsp; （格式内容位置） 效果：<br><center>内容居中</center><br></li>
+<li>[url]http://www.crossday.com[/url] &nbsp; 效果：<a href="http://www.crossday.com" target="_blank">http://www.crossday.com</a> （超级连接）<br><br></li>
+<li>[url=http://www.Discuz.net]Discuz! 论坛[/url] &nbsp; 效果：<a href="http://www.Discuz.net" target="_blank">Discuz! 论坛</a> （超级连接）<br><br></li>
+<li>[email]support@crossday.com[/email] &nbsp; 效果：<a href="mailto:support@crossday.com">support@crossday.com</a> （E-Mail 链接）<br><br></li>
+<li>[email=support@discuz.net]Discuz! 技术支持[/email] &nbsp; 效果：<a href="mailto:support@discuz.net">Discuz! 技术支持</a> （E-Mail 链接）<br><br></li>
+<li>[quote]Discuz! Board 版权所有 - Crossday Studio[/quote] &nbsp; （引用内容，类似的代码还有 [code][/code]）<br><br></li>
+<li>[hide]免费账号为：163/163[/hide] &nbsp; （按回复隐藏内容，仅限版主及管理员使用）<br>效果：只有当浏览者回复本贴时，才显示其中的内容，否则显示为“<b>**** 隐藏信息 跟贴后才能显示 *****</b>”<br><br></li>
+<li>[hide=20]免费账号为：163/163[/hide] &nbsp; （按{$credittitle}隐藏内容，仅限版主及管理员使用）<br>效果：只有当浏览者{$credittitle}高于 20 {$creditunit}时，才显示其中的内容，否则显示为“<b>**** 隐藏信息 {$credittitle}高于 20 点才能显示 ****</b>”<br><br></li>
+<li>[list]<br>
+[*]列表项 #1<br>
+[*]列表项 #2<br>
+[*]列表项 #2<br>
+[/list] &nbsp; (列表)<br><br></li>
+<br>以下 Discuz! 代码需论坛允许 [img] 代码才能使用<hr noshade size="0" width="50%" color="$bordercolor" align="left"><br>
+<li>[iframe]http://www.crossday.com[/iframe] &nbsp; （在贴子中镶嵌网页）<br><br></li>
+<li>[img]http://www.crossday.com/statdard/images/logo.gif[/img] &nbsp; （链接图像）<br>效果：<br><img src="images/standard/logo.gif"> <br><br></li>
+<li>[img=88,31]http://www.crossday.com/images/logo.gif[/img] &nbsp;（链接图像并限制大小）<br> 效果：<br><img src="images/logo.gif" height="31" width="88"> <br><br></li>
+<li>[swf]http://www.crossday.com/cdb/images/banner.swf[/swf] &nbsp; （链接 flash 动画，用法与 [img] 类似）<br><br></li>
+<li>[swf=88,31]http://www.crossday.com/cdb/images/banner.swf[/swf] &nbsp;（链接 flash 动画并限制大小，用法与 [img] 类似）<br><br></li>
+<li>[wmv][/wmv]、[mid][/mid]、[ra][/ra]、[rm][/rm] &nbsp; （用于在贴子中插入上述多媒体格式文件，用法与其他 Discuz! 代码类似）<br><br></li>
+</ol>
+</td></tr></table>
+</td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr>
+<td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td width="100%" class="header">普通用户如何成为版主？</td>
+<a name=#2></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;论坛的版主是自愿申请的，管理员可能会要求版主需要达到一定{$credittitle}，或在论坛注册超过一定时间等。
+版主应该是诚实守信、乐于助人、大公无私的表率，同时还要熟悉专业，经验丰富，有良好的口碑。如果你确认已经达到上面几点，并希望担任本站
+的版主，可以与管理员联系。
+</td></tr></table>
+</td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr>
+<td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td width="100%" class="header">我在 $bbname 具有哪些权限？</td>
+<a name=#3></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;本站会员等级是按照{$credittitle}区分的，Discuz! 可以依照您的发帖量，其他用户的评分，或两者综合来决定
+{$credittitle}。当{$credittitle}达到一定等级要求时，系统会自动给您升级并给予相应的权限和星星标志。下面是您{$current}的级别
+和权限详情：<br><br>
+<table cellspacing="0" cellpadding="0" border="0" width="600" align=center><tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+$groupinfo
+</table>
+</td></tr></table><br><br>
+<form method="post" action="faq.php?page=misc#3">
+<table cellspacing="0" cellpadding="0" border="0" width="600" align=center><tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr><td bgcolor="$altbg1" align="center">查询用户组：</td>
+<td bgcolor="$altbg2" align="center">$groupselect</td>
+<td bgcolor="$altbg1" align="center">查询权限：</td>
+<td bgcolor="$altbg2" align="center">$permselect</td>
+<td bgcolor="$altbg1" align="center"><input type="submit" name="searchsubmit" value="查 询"></td>
+</tr></table></td></tr></table></form>
+<table cellspacing="0" cellpadding="0" border="0" width="450" align=center>
+<tr><td>$grouplist</td></tr></table>
+</td></tr></table>
+</td></tr></table>
+|#*CDB TEMPLATE FILE*#|memcp_navbar|#*CDB TEMPLATE*#|
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="$bordercolor" width="$tablewidth" align="center">
+<tr><td>
+<table cellspacing="$borderwidth" cellpadding="$tablespace" border="0" width="100%">
+<tr align="center">
+<td bgcolor="$navcolor[home]">$navlink[home]</td>
+<td bgcolor="$navcolor[profile]">$navlink[profile]</td>
+<td bgcolor="$navcolor[subscriptions]">$navlink[subscriptions]</td>
+<td bgcolor="$navcolor[favorites]">$navlink[favorites]</td>
+<td bgcolor="$altbg2"><a href="###" onclick="Popup('u2u.php?sid=$sid', 'u2u', 580, 450);">短 消 息</a></td>
+<td bgcolor="$altbg2"><a href="###" onclick="Popup('buddy.php?sid=$sid', 'buddylist', 250, 300);">好友列表</a></td>
+</tr></table></td></tr></table><br>
+|#*CDB TEMPLATE FILE*#|buddylist_buddy_online|#*CDB TEMPLATE*#|
+<tr><td bgcolor="$altbg1" align="center" onMouseOver ="this.style.backgroundColor='$altbg2'" onMouseOut ="this.style.backgroundColor='$altbg1'"><a href="member.php?action=viewpro&username=$encodename" target="_blank">$buddy[buddyname]</a></td></tr>
+|#*CDB TEMPLATE FILE*#|faq|#*CDB TEMPLATE*#|<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">用户须知</td> 
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+<ul>
+<li><a href="faq.php?page=usermaint#1">我必须要注册吗？</a></li>
+<li><a href="faq.php?page=usermaint#2">Discuz! 论坛使用 Cookies 吗？</a></li>
+<li><a href="faq.php?page=usermaint#3">如何使用签名？</a></li>
+<li><a href="faq.php?page=usermaint#4">如何使用个性化的头像？</a></li>
+<li><a href="faq.php?page=usermaint#5">如果我遗忘了密码，我该怎么办？</a></li>
+<li><a href="faq.php?page=usermaint#6">什么是“短消息”？</a></li>
+</td>
+</tr>
+</table></td></tr></table>
+
+<br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">论坛使用</td> 
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+<ul>
+<li><a href="faq.php?page=using#1">在哪里可以登录？</a></li>
+<li><a href="faq.php?page=using#2">在哪里可以退出？</a></li>
+<li><a href="faq.php?page=using#3">我要搜索论坛，应该怎么做</a></li>
+<li><a href="faq.php?page=using#4">怎样给其他人发送“短消息”？</a></li>
+<li><a href="faq.php?page=using#5">怎样看到全部的会员？</a></li>
+</td>              
+</tr>
+</table></td></tr></table>
+
+<br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">读写贴子和收发短消息</td> 
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+<ul>
+<li><a href="faq.php?page=messages#1">如何发布新贴子？</a></li>
+<li><a href="faq.php?page=messages#2">如何回复贴子？</a></li>
+<li><a href="faq.php?page=messages#3">我能够删除主题吗？</a></li>
+<li><a href="faq.php?page=messages#4">怎样编辑自己发表的贴子？</a></li>
+<li><a href="faq.php?page=messages#5">我可不可以上传附件？</a></li>
+<li><a href="faq.php?page=messages#6">什么是 Smilies？</a></li>
+<li><a href="faq.php?page=messages#7">该怎样发起一个投票？</a></li>
+</td>
+</tr>
+</table></td></tr></table>
+
+<br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">其他问题</td> 
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+<ul>
+<li><a href="faq.php?page=misc#1">能说明一下 Discuz! 代码的用法吗？</a></li>
+<li><a href="faq.php?page=misc#2">普通用户如何成为版主？</a></li>
+<li><a href="faq.php?page=misc#3">我在 $bbname 具有哪些权限？</a></li>
+</td>
+</tr>
+</table></td></tr></table>
+|#*CDB TEMPLATE FILE*#|faq_using|#*CDB TEMPLATE*#|
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">论坛使用</td> 
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+<ul>
+<li><a href="#1">在哪里可以登录？</a></li>
+<li><a href="#2">在哪里可以退出？</a></li>
+<li><a href="#3">我要搜索论坛，应该怎么做？</a></li>
+<li><a href="#4">怎样给其他人发送“短消息”？</a></li>
+<li><a href="#5">怎样看到全部的会员？</a></li>
+</td>
+</tr>
+</table></td></tr></table>
+
+<br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">在哪里可以登录？</td> <a name=#1></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;如果您尚未登录，点击左上角的“登录”，输入用户名和密码，确定即可。
+</td>
+</tr>
+</table></td></tr></table>
+        
+<br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">在哪里可以退出？</td><a name=#2></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;如果您已经登录，点击左上角的“退出”，系统会清除 Cookies，退出登录状态。
+</td>
+</tr>
+</table></td></tr></table>
+        
+<br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">我要搜索论坛，应该怎么做？</td><a name=#3></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;点击上面的 <a href="misc.php?action=search">论坛搜索</a>，输入想搜索的文字内容并选择一个范围，就可以检索到相关的贴子。
+</td>
+</tr>
+</table></td></tr></table>
+        
+<br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">怎样给其他人发送“短消息”？</td><a name=#4></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;如果您已登录，菜单上会显示出 <a href="###" onclick="Popup('u2u.php?sid=$sid', 'u2u', 580, 450);">短消息</a> 项，点击后弹出短消息窗口，通过类似发送邮件一样的填写，点“发送”，消息就被发到对方收件箱中了。当他/她再次登录论坛时，系统将提示他/她收信息。</td>
+</tr>
+</table></td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">怎样看到全部的会员？</td><a name=#5></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;您可以通过点击 <a href="member.php?action=list">会员</a> 查看所有的会员及其资料，并可实现会员资料的检索和排序输出。</td>
+</tr>
+</table></td></tr></table>
+|#*CDB TEMPLATE FILE*#|faq_messages|#*CDB TEMPLATE*#|<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">读写贴子和收发短消息</td> 
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+<ul>
+<li><a href="#1">如何发布新贴子？</a></li>
+<li><a href="#2">如何回复贴子？</a></li>
+<li><a href="#3">我能够删除主题吗？</a></li>
+<li><a href="#4">怎样编辑自己发表的贴子？</a></li>
+<li><a href="#5">我可不可以上传附件？</a></li>
+<li><a href="#6">什么是 Smilies？</a></li>
+<li><a href="#7">该怎样发起一个投票？</a></li>
+</td>
+</tr>
+</table></td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">如何发布新贴子？</td><a name=#1></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;在论坛板块中，点“发新贴”即可进入功能齐全的发帖界面。当然您也可以使用板块下面的“快速发帖”发表新帖(如果此选项打开)。注意，一般论坛都设置为需要登录后才能发帖。
+</td>
+</tr>
+</table></td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">如何回复贴子？</td><a name=#2></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;在浏览贴子时，点“回复贴子”即可进入功能齐全的回复界面。当然您也可以使用板块下面的“快速回复”发表回复(如果此选项打开)。注意，一般论坛都设置为需要登录后才能回复。
+</td>
+</tr>
+</table></td></tr></table>        
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">我能够删除主题吗？</td><a name=#3></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;浏览贴子时可以按下面的“编辑贴子”，对于您自己发表的贴子，可以很容易的编辑和删除。但当这贴是整个主题的起始贴时，则会删除该主题和全部回复。
+</td>
+</tr>
+</table></td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">怎样编辑自己发表的贴子？</td><a name=#4></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;和上面一样，用“编辑贴子”就可以编辑自己发表的贴子。如果管理员通过论坛设置将这个功能屏蔽掉则不再可以进行此操作。
+</td>
+</tr>
+</table></td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">我可不可以上传附件？</td> <a name=#5></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;可以。您可以在任何允许上传附件的板块中，通过发新贴、或者回复的方式上传附件（只要您的权限足够）。附件必须在系统限定尺寸以下才能上传。
+</td>
+</tr>
+</table></td></tr></table>        
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">什么是 Smilies？</td><a name=#6></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;Smilies 是一些用字符表示的表情符号，如果打开 Smilies 功能，Discuz! 会把一些符号转换成小图像，显示在贴子中，更加美观明了。目前支持下面这些 Smilies：<br>
+<table cellspacing="0" cellpadding="0" border="0" width="50%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td width="25%" class="header" align="center">表情符号</td>
+<td width="75%" class="header" align="center">对应图像</td>
+</tr>
+$smilierows
+</table></td></tr></table></td>
+</tr>
+</table></td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center"> 
+<tr><td bgcolor="$bordercolor"> 
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%"> 
+<tr>
+<td width="100%" class="header">该怎样发起一个投票？</td><a name=#7></a>
+</tr>
+<tr>
+<td width="100%" bgcolor="$altbg2">
+&nbsp;&nbsp;&nbsp;&nbsp;您可以像发帖一样在板块中发起投票。每行输入一个可能的选项（最多10个），您可以通过阅读这个投票贴选出自己的答案，每人只能投票一次，之后将不能再对您的选择做出更改。<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;管理员拥有随时取消投票的权力。
+</td>
+</tr>
+</table></td></tr></table>
+|#*CDB TEMPLATE FILE*#|buddylist_buddy_offline|#*CDB TEMPLATE*#|
+<tr><td bgcolor="$altbg1" align="center" onMouseOver ="this.style.backgroundColor='$altbg2'" onMouseOut ="this.style.backgroundColor='$altbg1'"><a href="member.php?action=viewpro&username=$encodename" target="_blank">$buddy[buddyname]</a></td></tr>
+|#*CDB TEMPLATE FILE*#|buddylist|#*CDB TEMPLATE*#|<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=$charset">
+<meta name="generator" content="Discuz! Board $version">
+
+$css
+<title>$bbname - Powered by Discuz! Board</title>
+</head>
+<body>
+
+<table cellspacing="0" cellpadding="0" border="0" width="96%" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td class="header">好友列表</td>
+</tr>
+<tr><td bgcolor="$altbg1">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="98%">
+<tr>
+<td bgcolor="$altbg2" colspan="2"><span class="bold"><center>Online</center></span></td>
+</tr>
+$buddys[online]
+<tr>
+<td bgcolor="$altbg2" colspan="2"><span class="bold"><center>Offline</center></span></td>
+</tr>
+$buddys[offline]
+</table>
+<tr>
+<td bgcolor="$altbg2"><span class="bold"><a href="buddy.php"><center>刷新好友列表</center></a></span></td>
+</tr>
+</table>
+</td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="96%" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td bgcolor="$altbg1" align="center">
+<a href="buddy.php">好友列表</a><br>
+<a href="buddy.php?action=edit">编辑好友列表</a>
+</td>
+</tr></table>
+</td></tr></table>
+
+</body>
+</html>|#*CDB TEMPLATE FILE*#|buddylist_edit|#*CDB TEMPLATE*#|<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=$charset">
+<meta name="generator" content="Discuz! Board $version">
+
+$css
+<title>$bbname - Powered by Discuz! Board</title>
+</head>
+<body>
+
+<form method="post" action="buddy.php?action=edit">
+<table cellspacing="0" cellpadding="0" border="0" width="96%" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td class="header">编辑好友列表</td>
+</tr>
+<tr><td bgcolor="$altbg1">
+<table width="98%">
+<tr><center>
+$buddys
+<tr><td bgcolor="$altbg1" colspan="2" align="center"><input type="text" name="newbuddy1" value=""></td></tr>
+<tr><td bgcolor="$altbg1" colspan="2" align="center"><input type="text" name="newbuddy2" value=""></td></tr>
+</table>
+<tr>
+<td bgcolor="$altbg2"><center><input type="submit" name="editsubmit" value="更 新"></td>
+</tr>
+</table>
+</td></tr></table></form>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="96%" align="center">
+<tr> <td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td bgcolor="$altbg1">
+<font class="12px">
+<div align="center">
+<a href="buddy.php">好友列表</a><br><a href="buddy.php?action=edit">编辑好友列表</a>
+</font></div></td>
+</tr></table>
+</td></tr></table>
+
+</body>
+</html>|#*CDB TEMPLATE FILE*#|u2u_row|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1" align="center"><input type="checkbox" name="delete$message[u2uid]" value="$message[u2uid]"></td>
+<td bgcolor="$altbg2" onMouseOver ="this.style.backgroundColor='$altbg1'" onMouseOut ="this.style.backgroundColor='$altbg2'"><a href="u2u.php?action=view&u2uid=$message[u2uid]">$message[subject]</a></td>
+<td bgcolor="$altbg1" align="center">$message[msgfrom]</td>
+<td bgcolor="$altbg2" align="center"><span class="smalltxt">$senton</span></td>
+</tr>
+|#*CDB TEMPLATE FILE*#|buddylist_edit_buddy|#*CDB TEMPLATE*#|<tr><td bgcolor="$altbg1"><input type="checkbox" name="delete$buddy[buddyname]" value="$buddy[buddyname]"></td><td bgcolor="$altbg1">$buddy[buddyname]</td></tr>
+|#*CDB TEMPLATE FILE*#|buddylist_message|#*CDB TEMPLATE*#|<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=$charset">
+<meta name="generator" content="Discuz! Board $version">
+$url_redirect
+$css
+<title>$bbname - Powered by Discuz! Board</title>
+</head>
+<body>
+
+<table cellspacing="0" cellpadding="0" border="0" width="96%" height="250" align="center">
+<tr><td valign="middle">
+
+<table border="0" bgcolor="$bordercolor" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td bgcolor="$altbg1" align="center">
+<span class="smalltxt">
+$message
+$redirectjs
+</span></td>
+</tr></table>
+</td></tr></table>
+</body></html>|#*CDB TEMPLATE FILE*#|u2u|#*CDB TEMPLATE*#|$u2uheader
+<form method="post" action="u2u.php?action=delete">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" align="center">
+<tr><td class="multi">$multipage</td></tr>
+
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr><td class="header" colspan="4" align="center">$inboxoutbox</td></tr>
+<tr class="header" align="center">
+<td width="45"><input type="checkbox" name="chkall" class="header" onclick="checkall(this.form)">删?</td>
+<td width="50%">主题</td>
+<td>$tofrom</td>
+<td>发送日期</td>
+</tr>
+$messages
+</table></td></tr>
+<tr><td class="multi">$multipage</td></tr>
+</table><br>
+<input type="hidden" name="folder" value="$folder">
+<input type="submit" name="alldel" value="更 新">
+</form>
+$u2ufooter
+|#*CDB TEMPLATE FILE*#|u2u_header|#*CDB TEMPLATE*#|<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=$charset">
+<meta name="generator" content="Discuz! Board $version">
+$url_redirect
+$css
+<script language="JavaScript">
+function ctlent(obj) {if((event.ctrlKey && window.event.keyCode == 13) || (event.altKey && window.event.keyCode == 83)) {this.document.input.submit();}}
+function checkall(form) {for(var i = 0;i < form.elements.length; i++) {var e = form.elements[i];if (e.name != 'chkall') e.checked = form.chkall.checked;}}
+function findobj(n, d) {var p,i,x; if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);} if(!(x=d[n])&&d.all) x=d.all[n]; for(i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n]; for(i=0;!x&&d.layers&&i>d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); return x;}
+function copycode(obj) {var rng = document.body.createTextRange();rng.moveToElementText(obj);rng.scrollIntoView();rng.select();rng.execCommand("Copy");rng.collapse(false);}
+</script>
+
+<title>$bbname - Powered by Discuz! Board</title>
+</head>
+<body>
+
+<font class="mediumtxt">
+<div align="center" class="mediumtxt">
+<a href="u2u.php" class="mediumtxt">收件箱</a> -
+<a href="u2u.php?folder=outbox" class="mediumtxt">发件箱</a> -
+<a href="u2u.php?action=send" class="mediumtxt">发送短消息</a> -
+<a href="u2u.php?action=ignore" class="mediumtxt">忽略列表</a>
+</font><br><br>|#*CDB TEMPLATE FILE*#|u2u_footer|#*CDB TEMPLATE*#|<br><br><font class="mediumtxt">
+<a href="u2u.php" class="mediumtxt">收件箱</a> -
+<a href="u2u.php?folder=outbox" class="mediumtxt">发件箱</a> -
+<a href="u2u.php?action=send" class="mediumtxt">发送短消息</a> -
+<a href="u2u.php?action=ignore" class="mediumtxt">忽略列表</a>
+</body>
+</html>
+|#*CDB TEMPLATE FILE*#|u2u_send_buddylist|#*CDB TEMPLATE*#|
+<tr><td bgcolor="$altbg1" valign="top" id="buddy">好友群发：<br>
+全部好友<input type="checkbox" name="chkall" onclick="for(var i = 0;i < form.elements.length; i++) {var e = form.elements[i];
+if (e.name != 'chkall' && e.name != 'saveoutbox') e.checked = form.chkall.checked;}"></td>
+<td bgcolor="$altbg2">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">$msgtob</table>
+</td></tr>
+|#*CDB TEMPLATE FILE*#|u2u_send|#*CDB TEMPLATE*#|$u2uheader
+<form method="post" name="input" action="u2u.php?action=send">
+<input type="hidden" name="u2usubmit" value="submit">
+
+<table cellspacing="0" cellpadding="0" border="0" width="98%" align="center">
+<tr> <td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td width="100%" colspan="2" class="header">发送短消息</td>
+</tr>
+
+<tr><td bgcolor="$altbg1" width="18%">收件人：</td>
+<td bgcolor="$altbg2" width="82%"><input type="text" name="msgtoa" size="50" value="$touser"></td></tr>
+
+$buddylist
+
+<tr>
+<td bgcolor="$altbg1">主题：</td>
+<td bgcolor="$altbg2"><input type="text" name="subject" size="65" value="$subject"></td>
+</tr>
+
+<tr>
+<td valign="top" bgcolor="$altbg1">消息内容：</td>
+<td bgcolor="$altbg2"><textarea rows="8" name="message" cols="65" onKeyDown="javascript: ctlent();">$message</textarea><BR>
+<input type="checkbox" name="saveoutbox" value="1">保存到发件箱中 &nbsp; [完成后可按 Ctrl+Enter 发布]</td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<input type="submit" name="u2usubmit" value="发送短消息">
+</form>
+$u2ufooter|#*CDB TEMPLATE FILE*#|u2u_ignore|#*CDB TEMPLATE*#|$u2uheader
+<form method="post" action="u2u.php?action=ignoresubmit">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr><td class="header" colspan="2">忽略列表</td></tr>
+
+<tr>
+<td bgcolor="$altbg1">忽略列表：<br>添加多个忽略人员名单时用逗号 "," 隔开(如：张三,李四,王五等)。当这些被添加的忽略用户给您发送短消息时将不予接收。</td>
+<td bgcolor="$altbg2"><textarea rows="5" cols="30" name="ignorelist">$mem[ignoreu2u]</textarea></td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<input type="submit" value="更 新">
+</form>
+$u2ufooter|#*CDB TEMPLATE FILE*#|u2u_view_refwdlinks|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1" colspan="2"><a href="u2u.php?action=send&u2uid=$u2uid&do=reply">回复</a> - <a href="u2u.php?action=send&u2uid=$u2uid&do=forward">转发</a></td>
+</tr>
+|#*CDB TEMPLATE FILE*#|u2u_message|#*CDB TEMPLATE*#|$u2uheader
+<table cellspacing="0" cellpadding="0" border="0" width="98%" align="center">
+<tr> <td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td bgcolor="$altbg1">
+<font class="12px">
+<div align="center">
+$message
+$redirectjs
+</font></div></td>
+</tr></table>
+</td></tr></table>
+$u2ufooter
+|#*CDB TEMPLATE FILE*#|u2u_view|#*CDB TEMPLATE*#|$u2uheader
+<form method="post" action="u2u.php?action=delete">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" align="center">
+<tr>
+<td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td  class="header" colspan="2">$u2u[subject]</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">发信人：</td>
+<td bgcolor="$altbg2">$u2u[msgfrom]</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">收信人：</td>
+<td bgcolor="$altbg2">$u2u[msgto]</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">发送日期：</td>
+<td bgcolor="$altbg2">$dateline</td>
+</tr>
+
+<tr>
+<td valign="top" bgcolor="$altbg1" width="15%">消息内容：</td>
+<td bgcolor="$altbg2">$u2u[message]</td>
+</tr>
+$refwdlinks
+</table>
+</center></div></td>
+</tr>
+</table><br>
+<input type="hidden" name="u2uid" value="$u2uid">
+<input type="submit" name="imsubmit" value="删 除"></form>
+$u2ufooter|#*CDB TEMPLATE FILE*#|misc_search|#*CDB TEMPLATE*#|<form method="post" action="misc.php?action=search">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="4">论坛搜索</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="15%" valign="top">关 键 字：</td>
+<td bgcolor="$altbg2" colspan="3"><input type="text" name="srchtxt" size="25" maxlength="40">
+&nbsp;&nbsp;&nbsp;关键字中可使用通配符 "*" 匹配，如 "想去*和*约会"
+<br><br>同时匹配多个关键字，请用空格 " "、加号 "+"、"&" 或 "AND" 连接。如 windows AND unix
+<br>匹配多个关键字其中部分，请用 "|" 或 "OR" 连接。如 windows OR unix
+</td>
+</tr>        
+
+<tr>
+<td bgcolor="$altbg1" width="15%">搜索用户：</td>
+<td bgcolor="$altbg2" colspan="3"><input type="text" name="srchuname" size="25" maxlength="40">
+&nbsp;&nbsp;&nbsp;如需部分匹配用户名，请使用 "*"，如 *user*name*
+</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="15%">搜索论坛：</td>
+<td bgcolor="$altbg2" width="35%">$forumselect</td>
+
+<td bgcolor="$altbg1" width="15%">时间范围：</td>
+<td bgcolor="$altbg2" width="35%"><select name="srchfrom">
+<option value="0" selected="selected">全部时间</option>
+<option value="86400">1 天以来</option>
+<option value="172800">2 天以来</option>
+<option value="432000">1 周以来</option>
+<option value="1296000">1 个月以来</option>
+<option value="5184000">3 个月以来</option>
+<option value="8640000">6 个月以来</option>
+<option value="31536000">1 年以来</option>
+</select></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">输出方式：</td>
+<td bgcolor="$altbg2" colspan="3"><input type="radio" name="dispmode" value="nav" $navcheck> 页码导航 - 统计全部匹配结果 &nbsp; &nbsp;<input type="radio" name="dispmode" value="gradual" $gradcheck> 渐进链接 - 由链接转入后续结果</td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="searchsubmit" value="搜  索"></center>
+</form>|#*CDB TEMPLATE FILE*#|member_reg_password|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1">密码：</td>
+<td bgcolor="$altbg2"><input type="password" name="password" size="25"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">重复密码：</td>
+<td bgcolor="$altbg2"><input type="password" name="password2" size="25"></td>
+</tr>
+|#*CDB TEMPLATE FILE*#|member_reg|#*CDB TEMPLATE*#|<form method="post" action="member.php?action=reg&referer=$referer">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td colspan="2" class="header">注册 - 以下项目必填</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名：</td>
+<td bgcolor="$altbg2"><input type="text" name="username" size="25" maxlength="25"></td>
+</tr>
+
+$pwtd
+
+<tr>
+<td bgcolor="$altbg1">Email：</td>
+<td bgcolor="$altbg2"><input type="text" name="email" size="25"></td>
+</tr>
+
+<tr>
+<td colspan="2" class="header">注册 - 以下项目可选</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">性别：</td>
+<td bgcolor="$altbg2">
+<input type="radio" name="gendernew" value="1"> 男 &nbsp; 
+<input type="radio" name="gendernew" value="2"> 女 &nbsp; 
+<input type="radio" name="gendernew" value="0" checked> 不告诉你
+</td></tr>
+
+<tr>
+<td bgcolor="$altbg1">生日：</td>
+<td bgcolor="$altbg2">
+<input type="text" name="year" size="4"> 年 
+<select name="month">
+<option value="">&nbsp;</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select> 月 $dayselect 日
+</td></tr>
+
+<tr>
+<td bgcolor="$altbg1">来自：</td>
+<td bgcolor="$altbg2"><input type="text" name="locationnew" size="25"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">网址：</td>
+<td bgcolor="$altbg2"><input type="text" name="site" size="25"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">OICQ：</td>
+<td bgcolor="$altbg2"><input type="text" name="oicq" size="25"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">ICQ：</td>
+<td bgcolor="$altbg2"><input type="text" name="icq" size="25"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">Yahoo：</td>
+<td bgcolor="$altbg2"><input type="text" name="yahoo" size="25"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">MSN：</td>
+<td bgcolor="$altbg2"><input type="text" name="msn" size="25"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">个人简介：</td>
+<td bgcolor="$altbg2"><textarea rows="5" cols="30" name="bio"></textarea></td>
+</tr>
+
+<tr>
+<td colspan="2" class="header">注册 - 论坛个性化设置</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">界面方案：</td>
+<td bgcolor="$altbg2">$themelist</td>
+</tr>
+
+$changecode
+
+<tr>
+<td bgcolor="$altbg1">每页主题数：</td>
+<td bgcolor="$altbg2"><input type="text" name="tppnew" value="$topicperpage" size="4"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">每页贴数：</td>
+<td bgcolor="$altbg2"><input type="text" name="pppnew" value="$postperpage" size="4"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">时间格式：</td>
+<td bgcolor="$altbg2"><input type="radio" value="24" name="timeformatnew">24 小时制 <input type="radio" value="12" name="timeformatnew" checked="checked">12 小时制</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">日期格式(yyyy/mm/dd，mm/dd/yy，等)：</td>
+<td bgcolor="$altbg2"><input type="text" name="dateformatnew" size="25" value="$dateformatorig"></td>
+</tr>
+
+$customstatus
+
+<tr>
+<td bgcolor="$altbg1">其他选项：</td>
+<td bgcolor="$altbg2">
+<input type="checkbox" name="showemail" value="1" checked="checked"> Email 地址可见<br>
+<input type="checkbox" name="newsletter" value="1" checked="checked"> 允许接收论坛通知 (Email 或短消息)<br>
+<input type="text" name="timeoffsetnew" value="$timeoffset" size="3"> 时间较正(北京时间 +8)，目前GMT标准时间 $currdate<br></td>
+</tr>
+
+$avatarselect
+
+<tr>
+<td bgcolor="$altbg1">个人签名{$allowmaxsigsize}：<br><br>
+<a href="faq.php?page=misc#1" target="_blank">Discuz! 代码</a> 状态 $bbcodeis<br>
+[img]代码 状态 $imgcodeis</td>
+<td bgcolor="$altbg2"><textarea rows="4" cols="30" name="sig"></textarea></td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="regsubmit" value="用 户 注 册"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|member_viewpro_email|#*CDB TEMPLATE*#|
+<tr><td bgcolor="$altbg1">Email：</td><td bgcolor="$altbg2"><a href="mailto:$email">$email</a></td></tr>
+|#*CDB TEMPLATE FILE*#|member_viewpro_regip|#*CDB TEMPLATE*#|
+<tr><td width="45%" class="bold">注册 IP：</td><td width="55%">$ipaddr - $iplocation</td></tr>
+|#*CDB TEMPLATE FILE*#|member_viewpro|#*CDB TEMPLATE*#|
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr><td colspan="2" class="header">$member 的个人资料</td>
+</tr><tr><td bgcolor="$altbg2">
+
+
+<table border="0" cellspacing="0" cellpadding="6" width="98%">
+<tr><td width="70%">
+
+<table border="0" cellspacing="0" cellpadding="$tablespace" width="98%">
+<tr><td colspan="2" align="center"><a href="###" onclick="Popup('u2u.php?action=send&username=$encodeuser&sid=$sid', 'u2u', 550, 450);">[ 发短消息 ]</a> 
+&nbsp; &nbsp; <a href="###" onclick="Popup('buddy.php?action=add&buddy=$encodeuser&sid=$sid', 'buddylist', 250, 300);">[ 加为好友 ]</a> &nbsp; &nbsp; 
+<a href="misc.php?action=search&srchuname=$member&srchfid=all&srchfrom=0&searchsubmit=yes">[ 搜索贴子 ]</a>$edituser<br><br></td></tr>
+<tr><td width="45%" class="bold">注册日期：</td><td width="55%">$memberinfo[regdate]</td></tr>
+$regip
+<tr><td width="45%" class="bold">上次访问：</td><td width="55%">$lastmembervisittext</td></tr>
+<tr><td colspan="2"><hr noshade size="0" width="95%" color="$bordercolor"></td></tr>
+<tr><td width="45%" class="bold">{$credittitle}：</td><td width="55%">$memberinfo[credit] $creditunit</td></tr>
+<tr><td width="45%" class="bold">用户组：</td><td width="55%">$memberinfo[status] - $memberinfo[grouptitle]</td></tr>
+<tr><td width="45%" class="bold">等级：</td><td width="55%">$stars</td></tr>
+<tr><td width="45%" class="bold">发帖数：</td><td width="55%">$memberinfo[postnum] (占全部贴子的 $percent%)</td></tr>
+<tr><td width="45%" class="bold">平均每日发帖：</td><td width="55%">$ppd 贴</td></tr>
+<tr><td colspan="2"><hr noshade size="0" width="95%" color="$bordercolor"></td></tr>
+<tr><td width="45%" class="bold">性别：</td><td width="55%">$memberinfo[gender]</td></tr>
+<tr><td width="45%" class="bold">来自：</td><td width="55%">$memberinfo[location]</td></tr>
+<tr><td width="45%" class="bold">生日：</td><td width="55%">$memberinfo[bday]</td></tr>
+<tr><td width="45%" class="bold">个人简介：</td><td width="55%">$memberinfo[bio]</td></tr>
+</table>
+
+</td><td width="30%">
+<table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header"><td colspan="2">个人信息</td></tr>
+<tr bgcolor="$altbg2"><td align="center" colspan="2"><br>$avatar<br><br></td></tr>
+<tr><td bgcolor="$altbg1" width="20%">主页：</td><td bgcolor="$altbg2"><a href="$memberinfo[site]" target="_blank">$memberinfo[site]</a></td></tr>
+$emailblock
+<tr><td bgcolor="$altbg1" width="20%">OICQ：</td><td bgcolor="$altbg2">$memberinfo[oicq]</td></tr>
+<tr><td bgcolor="$altbg1" width="20%">ICQ：</td><td bgcolor="$altbg2">$memberinfo[icq]</td></tr>
+<tr><td bgcolor="$altbg1" width="20%">Yahoo：</td><td bgcolor="$altbg2">$memberinfo[yahoo]</td></tr>
+<tr><td bgcolor="$altbg1" width="20%">MSN：</td><td bgcolor="$altbg2">$memberinfo[msn]</td></tr>
+</table></td></tr></table>
+
+</td></tr></table>
+
+
+</td></tr></table></td></tr></table>
+|#*CDB TEMPLATE FILE*#|misc_search_results|#*CDB TEMPLATE*#|
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td class="multi">$multipage</td></tr>
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%" style="table-layout: fixed; word-wrap: break-word">
+<tr class="header">
+<td align="center" width="43%">主题</td>
+<td align="center" width="14%">论坛</td>
+<td align="center" width="12%">作者</td>
+<td align="center" width="6%">回复</td>
+<td align="center" width="6%">浏览</td>
+<td align="center" width="19%">最后发表</td>
+</tr>
+$searchresults
+$nextlink
+</table></td></tr>
+<tr><td height="3"></td></tr>
+<tr><td class="multi">$multipage</td></tr>
+</table>
+|#*CDB TEMPLATE FILE*#|misc_search_result_row|#*CDB TEMPLATE*#|
+<tr>
+<td bgcolor="$altbg2" onMouseOver ="this.style.backgroundColor='$altbg1'" onMouseOut ="this.style.backgroundColor='$altbg2'">$prefix<a href="viewthread.php?tid=$thread[tid]$highlight">$thread[subject]</a>$multipage2</td>
+<td bgcolor="$altbg1" align="center"><a href="forumdisplay.php?fid=$thread[fid]">$forumname</a></td>
+<td bgcolor="$altbg2" align="center"><a href="member.php?action=viewpro&username=$author">$thread[author]</a></td>
+<td bgcolor="$altbg1" align="center">$thread[replies]</td>
+<td bgcolor="$altbg2" align="center">$thread[views]</td>
+<td bgcolor="$altbg1" align="center">$lastpost</td>
+</tr>
+|#*CDB TEMPLATE FILE*#|misc_search_result_none|#*CDB TEMPLATE*#|
+<tr><td bgcolor="$altbg1" colspan="6"><span class="mediumtxt ">对不起，没有找到匹配结果。</span></td></tr>
+|#*CDB TEMPLATE FILE*#|member_list_row_email|#*CDB TEMPLATE*#|<a href="mailto:$member[email]"><img src="$imgdir/email.gif" border="0" alt="发送电子邮件"></a>
+|#*CDB TEMPLATE FILE*#|member_list_row|#*CDB TEMPLATE*#|
+<tr>
+<td bgcolor="$altbg1" align="center" nowrap><a href="member.php?action=viewpro&username=$memurl">$member[username]</a></td>
+<td bgcolor="$altbg2" align="center">$member[gender]</td>
+<td bgcolor="$altbg1" align="center">$email</td>
+<td bgcolor="$altbg2" align="center">$site</td>
+<td bgcolor="$altbg1" align="center">$member[location]</td>
+<td bgcolor="$altbg2" align="center">$member[regdate]</td>
+<td bgcolor="$altbg1" align="center">$member[lastvisit]</td>
+<td bgcolor="$altbg2" align="center">$member[postnum]</td>
+<td bgcolor="$altbg1" align="center">$member[credit] $creditunit</td>
+</tr>|#*CDB TEMPLATE FILE*#|member_list_row_site|#*CDB TEMPLATE*#|<a href="$member[site]" target="_blank"><img src="$imgdir/site.gif" border="0" alt="访问主页"></a>
+|#*CDB TEMPLATE FILE*#|member_list|#*CDB TEMPLATE*#|
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td class="multi">$multipage</td></tr>
+<tr><td height="3"></td></tr></table>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td width="15%" align="center">用户名</td>
+<td width="6%" align="center">性别</td>
+<td width="8%" align="center">Email</td>
+<td width="8%" align="center">主页</td>
+<td width="14%" align="center">来自</td>
+<td width="10%" align="center">注册日期</td>
+<td width="16%" align="center">上次访问</td>
+<td width="8%" align="center">发帖</td>
+<td width="10%" align="center">$credittitle</td>
+</tr>
+$members
+<form method="post" action="member.php?action=list">
+<tr>
+<td bgcolor="$altbg2" colspan="9">
+搜索用户 <input type="text" size="15" name="srchmem"> <input type="submit" value="执行">
+
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="bold">或</span>&nbsp;&nbsp;&nbsp;&nbsp;
+用户信息以：
+<a href="member.php?action=list&order=credit&desc=desc">$credittitle</a> -
+<a href="member.php?action=list&order=username">字母顺序</a> -
+<a href="member.php?action=list">注册日期</a> -
+<a href="member.php?action=list&forumleaders=010101">级别头衔</a>
+排序输出
+</td></tr></form>
+
+</table>
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td height="3"></td></tr>
+<tr><td class="multi">$multipage</td></tr></table>
+
+|#*CDB TEMPLATE FILE*#|memcp_profile_viewavatars|#*CDB TEMPLATE*#|
+<form method="post" action="memcp.php?action=viewavatars">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td>$multipage</td></tr>
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%" style="table-layout: fixed">
+<tr>
+<td colspan="4" class="header">论坛头像列表</td>
+</tr>
+
+$avatarlist
+
+</table></td></tr>
+<tr><td>$multipage</td></tr></table><br>
+<center><input type="submit" name="avasubmit" value="保存头像设置"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|memcp_profile|#*CDB TEMPLATE*#|
+$navbar
+<form method="post" action="memcp.php?action=profile" name="reg">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td colspan="2" class="header">编辑个人资料 - 基本项目</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">原密码：</td>
+<td bgcolor="$altbg2"><input type="password" name="oldpassword" size="25"> 如不需要更改密码，此处请留空</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">新密码：</td>
+<td bgcolor="$altbg2"><input type="password" name="newpassword" size="25"> 如不需要更改密码，此处请留空</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">Email：</td>
+<td bgcolor="$altbg2"><input type="text" name="emailnew" size="25" value="$member[email]"> $emailcheckmsg</td>
+</tr>
+
+<tr>
+<td colspan="2" class="header">编辑个人资料 - 可选项目</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">性别：</td>
+<td bgcolor="$altbg2">
+<input type="radio" name="gendernew" value="1" $checkmale> 男 &nbsp; 
+<input type="radio" name="gendernew" value="2" $checkfemale> 女 &nbsp; 
+<input type="radio" name="gendernew" value="0" $checkunknown> 不告诉你
+</td></tr>
+
+<tr>
+<td bgcolor="$altbg1">生日：</td>
+<td bgcolor="$altbg2">
+<input type="text" name="year" size="4" value="$bday[0]"> 年 
+<select name="month">
+<option value="" $month[0]>&nbsp;</option>
+<option value="1" $month[1]>1</option>
+<option value="2" $month[2]>2</option>
+<option value="3" $month[3]>3</option>
+<option value="4" $month[4]>4</option>
+<option value="5" $month[5]>5</option>
+<option value="6" $month[6]>6</option>
+<option value="7" $month[7]>7</option>
+<option value="8" $month[8]>8</option>
+<option value="9" $month[9]>9</option>
+<option value="10" $month[10]>10</option>
+<option value="11" $month[11]>11</option>
+<option value="12" $month[12]>12</option>
+</select> 月 $dayselect 日
+</td></tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">来自：</td>
+<td bgcolor="$altbg2"><input type="text" name="locationnew" size="25" value="$member[location]"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">主页：</td>
+<td bgcolor="$altbg2"><input type="text" name="sitenew" size="25" value="$member[site]"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">OICQ：</td>
+<td bgcolor="$altbg2"><input type="text" name="oicqnew" size="25" value="$member[oicq]"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">ICQ：</td>
+<td bgcolor="$altbg2"><input type="text" name="icqnew" size="25" value="$member[icq]"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">Yahoo：</td>
+<td bgcolor="$altbg2"><input type="text" name="yahoonew" size="25" value="$member[yahoo]"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">MSN：</td>
+<td bgcolor="$altbg2"><input type="text" name="msnnew" size="25" value="$member[msn]"/></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">个人简介：</td>
+<td bgcolor="$altbg2"><textarea rows="5" cols="30" name="bionew">$member[bio]</textarea></td>
+</tr>
+
+<tr>
+<td colspan="2" class="header">编辑个人资料 - 论坛个性化设置</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">界面方案：</td>
+<td bgcolor="$altbg2">$themelist</td>
+</tr>
+
+$changecode
+
+<tr>
+<td bgcolor="$altbg1">每页主题数：</td>
+<td bgcolor="$altbg2"><input type="text" name="tppnew" size="4" value="$member[tpp]"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">每页贴数：</td>
+<td bgcolor="$altbg2"><input type="text" name="pppnew" size="4" value="$member[ppp]"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">时间格式：</td>
+<td bgcolor="$altbg2"><input type="radio" value="24" name="timeformatnew" $check24>24 小时制
+<input type="radio" value="12" name="timeformatnew" $check12>12 小时制</td>
+</tr>
+
+$customuserstatus
+
+<tr>
+<td bgcolor="$altbg1">日期格式<br>(yyyy/mm/dd，mm/dd/yy 等)：</td>
+<td bgcolor="$altbg2"><input type="text" name="dateformatnew" size="25" value="$member[dateformat]"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">其他选项：</td>
+<td bgcolor="$altbg2">
+<input type="checkbox" name="showemailnew" value="1" $emailchecked> Email 地址可见<br>
+<input type="checkbox" name="newsletternew" value="1" $newschecked> 允许接收论坛通知 (Email 或短消息)<br>
+<input type="text" name="timeoffsetnew" size="3" value="$member[timeoffset]"> 时间较正 (北京时间 +8)，目前GMT标准时间 05:52 AM
+</td></tr>
+
+$avatarselect
+
+<tr>
+<td bgcolor="$altbg1">个人签名{$allowmaxsigsize}：<br><br>
+<a href="faq.php?page=misc#1" target="_blank">Discuz! 代码</a> 状态 $bbcodeis<br>
+[img]代码 状态 $imgcodeis</td>
+<td bgcolor="$altbg2"><textarea rows="4" cols="30" name="signew">$member[signature]</textarea></td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="editsubmit" value="编辑个人资料"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|memcp_profile_avatarlist|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1">头像地址：</td>
+<td bgcolor="$altbg2"><input type="button" value="点这里选择论坛提供头像" onclick="window.location=('memcp.php?action=viewavatars&sid=$sid')"></td>
+</tr>
+|#*CDB TEMPLATE FILE*#|memcp_profile_cstatus|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1" width="21%">自定义头衔：</td>
+<td bgcolor="$altbg2">
+<input type="text" name="cstatusnew" size="25" value="$member[customstatus]"></td>
+</tr>
+|#*CDB TEMPLATE FILE*#|member_reg_cstatus|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1" width="21%">自定义头衔：</td>
+<td bgcolor="$altbg2">
+<input type="text" name="cstatus" size="25"></td>
+</tr>
+|#*CDB TEMPLATE FILE*#|memcp_profile_avatar|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1">头像地址：</td>
+<td bgcolor="$altbg2"><input type="text" name="avatarnew" size="25" value="$member[avatar]">&nbsp;&nbsp;<input type="button" value="论坛头像" onclick="window.location=('memcp.php?action=viewavatars&sid=$sid')">
+<br>如使用 Flash 动画，请用逗号隔开 URL，宽度和高度，如“http://your.com/avatar.swf,80,40”</td>
+</tr>
+|#*CDB TEMPLATE FILE*#|member_reg_avatarlist|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1">头像地址：</td>
+<td bgcolor="$altbg2"><input type="button" value="点这里选择论坛提供头像" onclick="this.form.action+='&referer=memcp.php?action=viewavatars&regsubmit=yes';this.form.submit();"></td>
+</tr>
+|#*CDB TEMPLATE FILE*#|member_reg_avatar|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1">头像地址：</td>
+<td bgcolor="$altbg2"><input type="text" name="avatar" size="25" value="$member[avatar]">&nbsp;&nbsp;<input type="button" value="论坛头像" onclick="this.form.action+='&referer=memcp.php?action=viewavatars&regsubmit=1';this.form.submit();">
+<br>如使用 Flash 动画，请用逗号隔开 URL，宽度和高度，如“http://your.com/avatar.swf,80,40”</td>
+</tr>
+|#*CDB TEMPLATE FILE*#|memcp_profile_changecode|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1">论坛内码：</td>
+<td bgcolor="$altbg2">
+<select name="charsetnew">
+<option value="gb2312" $gbcheck>GB2312</option>
+<option value="big5" $bigcheck>BIG5</option>
+</select></td></tr>
+|#*CDB TEMPLATE FILE*#|member_reg_changecode|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1">论坛内码：</td>
+<td bgcolor="$altbg2">
+<select name="usercharset">
+<option value="gb2312" $gbcheck>GB2312</option>
+<option value="big5" $bigcheck>BIG5</option>
+</select></td></tr>
+|#*CDB TEMPLATE FILE*#|memcp_favs|#*CDB TEMPLATE*#|<form method="post" action="memcp.php?action=favorites">
+$navbar
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth"
+align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td class="header" align="center" width="45"><input type="checkbox" name="chkall" class="header" onclick="checkall(this.form)">删?</td>
+<td class="header" colspan="2" width="50%" align="center">主题</td>
+<td class="header" align="center">论坛</td>
+<td class="header" align="center">回复</td>
+<td class="header" align="center">最后发表</td>
+</tr>
+$favs
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="favsubmit" value="删除选定的收藏主题">
+</center>
+</form>|#*CDB TEMPLATE FILE*#|memcp_favs_none|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1" colspan="6">目前没有被收藏的主题。</td></tr>
+|#*CDB TEMPLATE FILE*#|memcp_favs_row|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg2" align="center"><input type="checkbox" name="delete[]" value="$fav[tid]"></td>
+<td bgcolor="$altbg1" width="5%" align="center">$fav[icon]</td>
+<td bgcolor="$altbg2" onMouseOver ="this.style.backgroundColor='$altbg1'" onMouseOut ="this.style.backgroundColor='$altbg2'"><a href="viewthread.php?tid=$fav[tid]">$fav[subject]</a></td>
+<td bgcolor="$altbg1" align="center"><a href="forumdisplay.php?fid=$fav[fid]">$fav[name]</a></td>
+<td bgcolor="$altbg2" align="center">$fav[replies]</td>
+<td bgcolor="$altbg1"align="center"><font class="smalltxt">$lastpost</font></td>
+</tr>|#*CDB TEMPLATE FILE*#|memcp_subs_row|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg2" align="center"><input type="checkbox" name="delete[]" value="$sub[tid]"></td>
+<td bgcolor="$altbg1" width="5%" align="center">$sub[icon]</td>
+<td bgcolor="$altbg2" onMouseOver ="this.style.backgroundColor='$altbg1'" onMouseOut ="this.style.backgroundColor='$altbg2'"><a href="viewthread.php?tid=$sub[tid]">$sub[subject]</a></td>
+<td bgcolor="$altbg1" align="center"><a href="forumdisplay.php?fid=$sub[fid]">$sub[name]</a></td>
+<td bgcolor="$altbg2" align="center">$sub[replies]</td>
+<td bgcolor="$altbg1" align="center"><font class="smalltxt">$lastpost</font></td>
+</tr>|#*CDB TEMPLATE FILE*#|memcp_subs_none|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1" colspan="6">目前您没有订阅任何主题。</td>
+|#*CDB TEMPLATE FILE*#|memcp_subs|#*CDB TEMPLATE*#|<form method="post" action="memcp.php?action=subscriptions">
+$navbar
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth"
+align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td class="header" align="center" width="45"><input type="checkbox" name="chkall" class="header" onclick="checkall(this.form)">删?</td>
+<td class="header" colspan=2 width="50%" align="center">主题</td>
+<td class="header" align="center">论坛</td>
+<td class="header" align="center">回复</td>
+<td class="header" align="center">最后发表</td>
+</tr>
+$subs
+</table>
+</td></tr></table><br>
+<center>
+<input type="submit" name="subsubmit" value="删除选定的订阅列表">
+</center>
+</form>
+|#*CDB TEMPLATE FILE*#|memcp_home_u2u_row|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg2" onMouseOver ="this.style.backgroundColor='$altbg1'" onMouseOut ="this.style.backgroundColor='$altbg2'"><a href="###" onclick="Popup('u2u.php?action=view&u2uid=$message[u2uid]&sid=$sid', 'u2u', 580, 450);">$message[subject]</a></td>
+<td bgcolor="$altbg1" align="center">$message[msgfrom]</td>
+<td bgcolor="$altbg2" align="center"><font class="smalltxt">$senton</font></td>
+</tr>|#*CDB TEMPLATE FILE*#|memcp_home_u2u_none|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1" colspan="4">目前收件箱中没有消息。</td>
+</tr>
+|#*CDB TEMPLATE FILE*#|memcp_home|#*CDB TEMPLATE*#|
+$navbar
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td bgcolor="$altbg1" align="center">
+您好 $cdbuserss ，欢迎进入控制面板，这里提供相关的资料设定与论坛快捷功能等。
+<br><br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth"
+align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan=4>账号信息：</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="15%">用户名：</td>
+<td bgcolor="$altbg2" width="35%">$cdbuserss</td>
+<td bgcolor="$altbg1" width="15%">{$credittitle}：</td>
+<td bgcolor="$altbg2" width="35%">$credit $creditunit</td>
+</tr>
+<tr>
+<td bgcolor="$altbg1" valign="top">头衔：</td>
+<td bgcolor="$altbg2" valign="top">$status</td>
+<td bgcolor="$altbg1" valign="top">头像：</td>
+<td bgcolor="$altbg2">$avatar</td>
+</tr>
+</table>
+</td></tr></table>
+</td>
+</tr>
+
+</table>
+</td></tr></table><br>
+
+<table border="0" cellspacing="0" cellpadding="0" width="$tablewidth" align="center">
+<tr><td>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" align="left"><table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr><td bgcolor="$bordercolor" width="20%">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td class="header">好友列表</td>
+</tr>
+<tr><td bgcolor="$altbg1">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="98%">
+<tr>
+<td bgcolor="$altbg2" colspan="2"><span class="bold"><center>Online</center></span></td>
+</tr>
+$buddys[online]
+<tr>
+<td bgcolor="$altbg2" colspan="2"><span class="bold"><center>Offline</center></span></td>
+</tr>
+$buddys[offline]
+</table>
+<tr>
+<td bgcolor="$altbg2"><span class="bold"><a href="###" onclick="Popup('buddy.php?sid=$sid', 'buddylist', 250, 300);"><center>打开好友列表</center></a></span></td>
+</tr>
+</table>
+</td></tr></table></td>
+<td width="10"></td>
+<td align="right" valign="top" width="80%">
+<table cellspacing="0" cellpadding="0" border="0" width="100%"
+align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="3">最近的五条短消息</td>
+</tr>
+<tr>
+<td class="header" width="55%" align="center">主题</td>
+<td class="header" width="20%" align="center">发信人</td>
+<td class="header" width="25%" align="center">发送日期</td>
+</tr>
+$messages
+</table>
+</td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="100%"
+align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="5">最近被回复的五个订阅主题</td>
+</tr>
+<tr>
+<td class="header" width="5%"></td>
+<td class="header" width="47%" align="center">主题</td>
+<td class="header" width="15%" align="center">论坛</td>
+<td class="header" width="8%" align="center">回复</td>
+<td class="header" width="25%" align="center">最后发表</td>
+</tr>
+$subs
+</table>
+</td></tr></table><br><br>
+</td></tr>
+</table>
+</td></tr>
+</table>
+|#*CDB TEMPLATE FILE*#|memo_home|#*CDB TEMPLATE*#|
+<form method="post" action="memo.php">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header"><td colspan="">搜索备忘录内容</td></tr>
+<tr><td bgcolor="$altbg1" align="center">
+搜索 <select name="searchfrom"><option value="0" selected="selected">全部时间</option>
+<option value="86400">1 天以来</option>
+<option value="172800">2 天以来</option>
+<option value="432000">1 周以来</option>
+<option value="1296000">1 个月以来</option>
+<option value="5184000">3 个月以来</option>
+<option value="8640000">6 个月以来</option>
+<option value="31536000">1 年以来</option>
+</select>
+以来的 <select name="action"><option value="address">个人通迅录</option>
+<option value="collections">网络收藏夹</option>
+<option value="notebook">我的记事簿</option>
+</select> 中包含关键字
+<input type="text" name="keyword" size="20"> 的内容
+&nbsp; &nbsp; &nbsp; <input type="submit" name="searchsubmit" value="执 行">
+</td></tr></table></td></tr></table></form>
+
+<table border="0" cellspacing="0" cellpadding="0" width="$tablewidth" align="center">
+<tr><td>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" align="left">
+
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr><td bgcolor="$bordercolor" width="35%">
+<table border="0" cellspacing="$borderwidth" cellpadding="0" width="100%">
+<tr><td>
+<table border="0" cellspacing="0" cellpadding="$tablespace" width="100%">
+<tr class="header"><td colspan="2">个人通讯录</td></tr>
+$address
+<tr bgcolor="$bordercolor" height="$borderwidth"><td colspan="2"></td></tr>
+<tr bgcolor="$altbg1"><td colspan="2" align="right"><a href="memo.php?action=address">打开通讯录</a></td></tr>
+</table></td></tr></table></td></tr></table>
+
+<form method="post" action="memo.php?action=address">
+<table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr><td bgcolor="$bordercolor" width="35%">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr><td class="header" colspan="2">添加通讯录</td></tr>
+<tr><td bgcolor="$altbg1" width="20%">名字：</td><td bgcolor="$altbg2" width="80%"><input type="text" name="memo_name" size="25"></td></tr>
+<tr><td bgcolor="$altbg1" width="20%">Email：</td><td bgcolor="$altbg2" width="80%"><input type="text" name="memo_email" size="25"></td></tr>
+<tr><td bgcolor="$altbg1" width="20%">主页：</td><td bgcolor="$altbg2" width="80%"><input type="text" name="memo_site" size="25"></td></tr>
+<tr><td bgcolor="$altbg1" width="20%">电话：</td><td bgcolor="$altbg2" width="80%"><input type="text" name="memo_tel" size="25"></td></tr>
+<tr><td bgcolor="$altbg1" width="20%">地址：</td><td bgcolor="$altbg2" width="80%"><input type="text" name="memo_address" size="25"></td></tr>
+</table></td></tr></table><br><center><input type="submit" name="addsubmit" value="添加通讯录"></center></form>
+
+</td><td width="10"></td><td align="right" valign="top" width="65%">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="0" width="100%">
+<tr><td>
+<table border="0" cellspacing="0" cellpadding="$tablespace" width="100%">
+<tr class="header"><td colspan="2">网络收藏夹</td></tr>
+$collections
+<tr bgcolor="$bordercolor" height="$borderwidth"><td colspan="2"></td></tr>
+<tr bgcolor="$altbg1"><td colspan="2" align="right"><a href="memo.php?action=collections">打开收藏夹</a></td></tr>
+</table></td></tr></table></td></tr></table>
+<br><table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="0" width="100%">
+<tr><td>
+<table border="0" cellspacing="0" cellpadding="$tablespace" width="100%">
+<tr class="header"><td colspan="2">我的记事簿</td></tr>
+$notebook
+<tr bgcolor="$bordercolor" height="$borderwidth"><td colspan="2"></td></tr>
+<tr bgcolor="$altbg1"><td colspan="2" align="right"><a href="memo.php?action=notebook">打开记事簿</a></td></tr>
+</table></td></tr></table></td></tr></table>
+<br><table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr><td width="49%">
+
+<form method="post" action="memo.php?action=collections">
+<table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header"><td colspan="2">添加到收藏夹</td></tr>
+<tr><td bgcolor="$altbg1" width="20%">网址：</td><td bgcolor="$altbg2" width="80%"><input type="text" name="memo_url" size="25"></td></tr>
+<tr><td bgcolor="$altbg1" width="20%">标题：</td><td bgcolor="$altbg2" width="80%"><input type="text" name="memo_title" size="25"></td></tr>
+<tr><td bgcolor="$altbg1" width="20%" valign="top">注释：</td><td bgcolor="$altbg2" width="80%"><textarea name="memo_comment" cols="24" rows="5"></textarea></td></tr>
+</table></td></tr></table><br><center><input type="submit" name="addsubmit" value="添加到收藏夹"></center></form>
+
+</td><td width="2%">&nbsp;</td><td width="49%">
+
+<form method="post" action="memo.php?action=notebook">
+<table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header"><td colspan="3">添加到记事簿</td></tr>
+<tr><td bgcolor="$altbg1" width="20%">类型：</td><td bgcolor="$altbg2" width="80%"><input type="text" name="memo_type" size="25"></td></tr>
+<tr><td bgcolor="$altbg1" width="20%">标题：</td><td bgcolor="$altbg2" width="80%"><input type="text" name="memo_title" size="25"></td></tr>
+<tr><td bgcolor="$altbg1" width="20%" valign="top">内容：</td><td bgcolor="$altbg2" width="80%"><textarea name="memo_text" cols="24" rows="5"></textarea></td></tr>
+</table></td></tr></table><br><center><input type="submit" name="addsubmit" value="添加到记事簿"></center></form>
+
+</td></tr></table>
+
+
+
+
+<br>
+</td></tr>
+</table>
+</td></tr>
+</table>
+|#*CDB TEMPLATE FILE*#|memo_address|#*CDB TEMPLATE*#|
+<form method="post" action="memo.php?action=address">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td colspan="6" class="multi">$multipage</td></tr>
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr align="center" class="header"><td width="45"><input type="checkbox" name="chkall" class="header" onclick="checkall(this.form)">删?</td>
+<td>名字</td><td>Email</td><td>主页</td><td>电话</td><td>地址</td></tr>
+$addressrow
+</table></td></tr>
+<tr><td colspan="6" class="multi">$multipage</td></tr></table><br><center><input type="submit" name="deletesubmit" value="删除选定条目"></center></form>
+|#*CDB TEMPLATE FILE*#|memo_address_row|#*CDB TEMPLATE*#|
+<tr align="center"><td bgcolor="$altbg1"><input type="checkbox" name="delete[]" value="$memo[id]"></td><td bgcolor="$altbg2">$memo[var1]</td><td bgcolor="$altbg1"><a href="mailto:$memo_email">$memo_email</a></td>
+<td bgcolor="$altbg2"><a href="$memo_site" target="_blank">$memo_site</a></td><td bgcolor="$altbg1">$memo_tel</td><td bgcolor="$altbg2">$memo_addr</td></tr>
+
+|#*CDB TEMPLATE FILE*#|memo_notebook|#*CDB TEMPLATE*#|
+<form method="post" action="memo.php?action=notebook">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td colspan="6" class="multi">$multipage</td></tr>
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr align="center" class="header"><td width="45"><input type="checkbox" name="chkall" class="header" onclick="checkall(this.form)">删?</td>
+<td>类型</td><td width="25%">标题</td><td width="60%">内容</td></tr>
+$notebookrow
+</table></td></tr>
+<tr><td colspan="3" class="multi">$multipage</td></tr></table><br><center><input type="submit" name="deletesubmit" value="删除选定条目"></center></form>
+|#*CDB TEMPLATE FILE*#|memo_notebook_row|#*CDB TEMPLATE*#|
+<tr align="center"><td bgcolor="$altbg1"><input type="checkbox" name="delete[]" value="$memo[id]"></td>
+<td bgcolor="$altbg2">$memo[var1]</td><td bgcolor="$altbg1">$memo[var2]</td><td bgcolor="$altbg2">$memo[var3]</td></tr>
+|#*CDB TEMPLATE FILE*#|memo_collections|#*CDB TEMPLATE*#|
+<form method="post" action="memo.php?action=collections">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td colspan="6" class="multi">$multipage</td></tr>
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr align="center" class="header"><td width="45"><input type="checkbox" name="chkall" class="header" onclick="checkall(this.form)">删?</td>
+<td width="20%">标题</td><td width="30%">网址</td><td width="40%">注释</td></tr>
+$collectionrow
+</table></td></tr>
+<tr><td colspan="3" class="multi">$multipage</td></tr></table><br><center><input type="submit" name="deletesubmit" value="删除选定条目"></center></form>
+|#*CDB TEMPLATE FILE*#|memo_collections_row|#*CDB TEMPLATE*#|
+<tr align="center"><td bgcolor="$altbg1"><input type="checkbox" name="delete[]" value="$memo[id]"></td>
+<td bgcolor="$altbg2">$memo[var1]</td><td bgcolor="$altbg1">$memo[var2]</td><td bgcolor="$altbg2">$memo[var3]</td></tr>
+|#*CDB TEMPLATE FILE*#|memo_home_addr_row|#*CDB TEMPLATE*#|
+<tr bgcolor="$bordercolor" height="$borderwidth"><td colspan="2"></td></tr>
+<tr bgcolor="$altbg1"><td>&nbsp;</td><td class="bold">$memo[var1]</td></tr>
+$addrdetail
+|#*CDB TEMPLATE FILE*#|memo_home_coll_row|#*CDB TEMPLATE*#|
+<tr bgcolor="$bordercolor" height="$borderwidth"><td colspan="2"></td></tr>
+<tr bgcolor="$altbg1"><td width="10%">&nbsp;</td><td class="bold">$memo[var1] - <a href="$memo[var2]" target="_blank">$memo[var2]</a></td></tr>
+<tr bgcolor="$altbg2"><td class="bold">注释</td><td>$memo[var3]</td></tr>
+|#*CDB TEMPLATE FILE*#|memo_home_note_row|#*CDB TEMPLATE*#|
+<tr bgcolor="$bordercolor" height="$borderwidth"><td colspan="2"></td></tr>
+<tr bgcolor="$altbg1"><td width="10%">&nbsp;</td><td class="bold">[$memo[var1]] $memo[var2]</td></tr>
+<tr bgcolor="$altbg2"><td class="bold">内容</td><td>$memo[var3]</td></tr>
+|#*CDB TEMPLATE FILE*#|viewthread_modoptions|#*CDB TEMPLATE*#|
+<span class="mediumtxt"><span class="bold">论坛管理：</span>
+<select name="action" id="action" onchange="
+if(this.options[this.selectedIndex].value != '') { if(this.options[this.selectedIndex].value != 'delpost') {
+window.location=('topicadmin.php?tid=$tid&fid=$fid&action='+this.options[this.selectedIndex].value+'&sid=$sid');
+} else { this.document.delpost.submit(); } }">
+<option value="" selected>管理选项</option>
+<option value="delpost">删除贴子</option>
+<option value="delete">删除主题</option>
+<option value="close">$closeopen</option>
+<option value="move">移动主题</option>
+<option value="digist">$setdigist</option>
+<option value="top">$topuntop</option>
+<option value="split">分割主题</option>
+<option value="merge">合并主题</option>
+<option value="bump">提升主题</option>
+</select></span>
+|#*CDB TEMPLATE FILE*#|viewthread_forumjump|#*CDB TEMPLATE*#|
+<span class="mediumtxt"><span class="bold">论坛跳转：</span>
+<select onchange="if(this.options[this.selectedIndex].value != '') {
+window.location=('forumdisplay.php?fid='+this.options[this.selectedIndex].value+'&sid=$sid') }">
+$forumselect
+</select></span>
+|#*CDB TEMPLATE FILE*#|viewthread_printable|#*CDB TEMPLATE*#|<html>
+<head>
+<style type="text/css">
+body,table,td {font-size: 15px; font-family: Times New Roman, Arial, 宋体}
+</style>
+<title>$bbname - Powered by Discuz! Board</title>
+</head>
+<script language=javascript>
+function print(){
+        if (document.layers) {
+                window.print() ;  
+        } else {
+                var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+                document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+                WebBrowser1.ExecWB(6, 2);
+                WebBrowser1.outerHTML = '';
+        }
+}
+</script>
+<body>
+
+<img src="$imgdir/$boardimg" alt="Board logo" border="0"><br><br>
+<span class="bold">标题：$thread[subject] <a href="javascript:print();">[打印]</a></span><br>
+$posts
+<hr noshade size="0" width="95%" color="$bordercolor"><table cellspacing="0" cellpadding="0" border="0" width="95%" align="center">
+<tr><td style="font-family: Tahoma,Verdana,宋体; font-size: 12px">欢迎光临 $bbname ($boardurl)</td>
+<td align="right" style="font-family: Tahoma,Verdana,宋体; font-size: 12px">
+Powered by Discuz! $version</td></tr></table>
+</body></html>|#*CDB TEMPLATE FILE*#|viewthread_printable_row|#*CDB TEMPLATE*#|<hr noshade size="0" width="95%" color="$bordercolor">
+<br><span class="bold">作者：</span>$post[author]<br><span class="bold">日期：</span>$poston
+<p><span class="bold">内容：</span><br>$post[message]</p>
+|#*CDB TEMPLATE FILE*#|post_preview|#*CDB TEMPLATE*#|<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header"><td colspan="2">预览贴子</td></tr>
+<tr bgcolor="$altbg1">
+<td rowspan="2" valign="top" width="20%"><span class="bold">$username</span><br><br></td>
+<td>$thread[icon] $poston</td></tr>
+<tr bgcolor="$altbg1"><td>
+<table height="100%" width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed; word-wrap: break-word">
+<tr><td><span class="bold">$dissubject</span><br><br>$message1<br></td></tr></table></td></tr>
+
+</table>
+</td></tr></table>
+<br>
+|#*CDB TEMPLATE FILE*#|post_newthread|#*CDB TEMPLATE*#|
+<script language="JavaScript" src="bbcode.js"></script>
+<script language="JavaScript">
+var postmaxchars = $maxpostsize;
+var isadmin = $isadmin;
+function checklength(theform) {
+        if (postmaxchars != 0) { message = "系统允许：$maxpostsize 字符"; }
+        else { message = ""; }
+        alert("\n当前长度："+theform.message.value.length+" 字符\n\n"+message);
+}
+function validate(theform) {
+        if (theform.subject.value == "") {
+                alert("请完成标题和内容栏。");
+                return false; }
+        if (postmaxchars != 0 && isadmin != 1) {
+                if (theform.message.value.length > $maxpostsize) {
+                        alert("您的贴子长度超过限制\n\n当前长度："+theform.message.value.length+" 字符\n系统允许：$maxpostsize 字符");
+                        return false; }
+                else { return true; }
+        } else { return true; }
+}
+</script>
+$preview
+<form method="post" name="input" action="post.php?action=newthread&fid=$fid" $enctype onSubmit="return validate(this)">
+<input type="hidden" name="topicsubmit" value="submit">
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td colspan="2" class="header">发新话题</td>
+</tr>
+
+$loggedin
+$viewpermission
+<tr>
+<td bgcolor="$altbg1" width="20%">主题：</td>
+<td bgcolor="$altbg2"><input type="text" name="subject" size="45" value="$subject" tabindex="3"></td>
+</tr>
+<tr><td bgcolor="$altbg1">图标：</td><td bgcolor="$altbg2">$icons</td></tr>
+$bbcodeinsert
+<tr>
+<td bgcolor="$altbg1" valign="top">贴子内容 <a href="javascript:checklength(document.input);">[字数检查]</a>：<br><br>
+html 状态 $allowhtml<br>
+Smilies 状态 $allowsmilies<br>
+<a href="faq.php?page=misc#1" target="_blank">Discuz! 代码</a> 状态 $allowbbcode<br>
+[img]代码 状态 $allowimgcode
+<br><br><br><br>
+$smilieinsert
+</td>
+
+<td align="left" bgcolor="$altbg2">
+<textarea rows="18" cols="85" name="message" tabindex="4" onSelect="javascript: storeCaret(this);" onClick="javascript: storeCaret(this);" onKeyUp="javascript: storeCaret(this);" onKeyDown="javascript: ctlent();">$message</textarea>
+<br><br>
+<input type="checkbox" name="parseurloff" value="1"> 禁用 URL 识别<br>
+<input type="checkbox" name="smileyoff" value="1" $smileyoffcheck> 禁用 Smilies<br>
+<input type="checkbox" name="bbcodeoff" value="1" $codeoffcheck> 禁用 Discuz! 代码<br>
+<input type="checkbox" name="usesig" value="1" $usesigcheck> 使用个人签名<br>
+<input type="checkbox" name="emailnotify" value="1"> 接收新回复邮件通知
+$modoptions</td> 
+</tr>
+$attachfile
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="topicsubmit" value="发表贴子" tabindex="5">
+<input type="submit" name="previewpost" value="预览贴子" tabindex="6">
+</center>
+</form>
+|#*CDB TEMPLATE FILE*#|topicadmin_getip|#*CDB TEMPLATE*#|
+<table cellspacing="0" cellpadding="0" border="0" width="60%" align="center">
+<tr><td bgcolor="$bordercolor">
+<form method="post" action="admincp.php?action=ipban&showmsgtype=cdb">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+
+<tr>
+<td class="header" colspan="3">查看 IP</td>
+</tr>
+<tr bgcolor="$altbg2">
+<td align="center">此用户的 IP 地址是 <span class="bold">$useip</span> - $iplocation
+</td>
+<tr bgcolor="$altbg1"><td align="center">
+$ipban
+</td></tr>
+</table></td></tr></table></form>
+|#*CDB TEMPLATE FILE*#|topicadmin_delthread|#*CDB TEMPLATE*#|<form method="post" action="topicadmin.php?action=delthread">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">删除选定主题</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名：</td>
+<td bgcolor="$altbg2">$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td>
+</tr>
+
+</table>
+</td></tr></table><br>
+$deleteid
+<input type="hidden" name="page" value="$page">
+<input type="hidden" name="fid" value="$fid">
+<center><input type="submit" name="delthreadsubmit" value="删除主题"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|topicadmin_delpost|#*CDB TEMPLATE*#|<form method="post" action="topicadmin.php?action=delpost">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">删除选定贴子</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名：</td>
+<td bgcolor="$altbg2">$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td>
+</tr>
+
+</table>
+</td></tr></table><br>
+$deleteid
+<input type="hidden" name="fid" value="$fid">
+<input type="hidden" name="tid" value="$tid">
+<input type="hidden" name="page" value="$page">
+<center><input type="submit" name="delpostsubmit" value="删除贴子"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|topicadmin_delete|#*CDB TEMPLATE*#|<form method="post" action="topicadmin.php?action=delete">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">删除主题</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名：</td>
+<td bgcolor="$altbg2">$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<input type="hidden" name="fid" value="$fid">
+<input type="hidden" name="tid" value="$tid">
+<center><input type="submit" name="deletesubmit" value="删除主题"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|topicadmin_digist|#*CDB TEMPLATE*#|<form method="post" action="topicadmin.php?action=digist">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">$cdbaction</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名：</td>
+<td bgcolor="$altbg2">$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td>
+</tr>
+<tr>
+<td bgcolor="$altbg1" width="21%">精华级别：</td>
+<td bgcolor="$altbg2">
+$removedigist
+<input type="radio" name="level" value="1" $digistcheck> <img src="$imgdir/star.gif"> &nbsp; &nbsp; 
+<input type="radio" name="level" value="2"> <img src="$imgdir/star.gif"><img src="$imgdir/star.gif"> &nbsp; &nbsp; 
+<input type="radio" name="level" value="3"> <img src="$imgdir/star.gif"><img src="$imgdir/star.gif"><img src="$imgdir/star.gif"></td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<input type="hidden" name="fid" value="$fid">
+<input type="hidden" name="tid" value="$tid">
+<center><input type="submit" name="digistsubmit" value="$cdbaction"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|topicadmin_karma|#*CDB TEMPLATE*#|<form method="post" action="topicadmin.php?action=karma">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">主题评分</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名：</td>
+<td bgcolor="$altbg2">$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td>
+</tr>
+<tr>
+<td bgcolor="$altbg1" width="21%">作者：</td>
+<td bgcolor="$altbg2"><a href="member.php?action=viewpro&username=$encodename">$username</a></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">评分：</td>
+<td bgcolor="$altbg2">$credittitle $score $creditunit</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">所在主题：</td>
+<td bgcolor="$altbg2"><a href="viewthread.php?tid=$tid">$threadname</a></td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<input type="hidden" name="tid" value="$tid">
+<input type="hidden" name="username" value="$username">
+<input type="hidden" name="score" value="$score">
+<center><input type="submit" name="karmasubmit" value="评 分"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|topicadmin_openclose|#*CDB TEMPLATE*#|<form method="post" action="topicadmin.php?action=close">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header"><td colspan="2">$cdbaction</td></tr>
+<tr><td bgcolor="$altbg1" width="21%">用户名</td>
+<td bgcolor="$altbg2" >$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td></tr>
+</table>
+</td></tr></table><br>
+<input type="hidden" name="fid" value="$fid">
+<input type="hidden" name="tid" value="$tid">
+<center><input type="submit" name="closesubmit" value="$cdbaction"></center>
+</form>|#*CDB TEMPLATE FILE*#|topicadmin_move|#*CDB TEMPLATE*#|<form method="post" action="topicadmin.php?action=move">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">移动主题</td>
+</tr>
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名：</td>
+<td bgcolor="$altbg2">$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">移动主题：</td>
+<td bgcolor="$altbg2">$forumselect</td>
+</tr>
+<tr>
+<td bgcolor="$altbg1" valign="top">移动方式：</td>
+<td bgcolor="$altbg2"><input type="radio" name="type" value="normal" checked> 移动主题<br>
+<input type="radio" name="type" value="redirect"> 移动主题并在原来的论坛中保留转向<br>
+</td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<input type="hidden" name="fid" value="$fid">
+<input type="hidden" name="tid" value="$tid">
+<center><input type="submit" name="movesubmit" value="移动主题"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|topicadmin_topuntop|#*CDB TEMPLATE*#|
+<form method="post" action="topicadmin.php?action=top">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">$cdbaction</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名：</td>
+<td bgcolor="$altbg2">$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td>
+</tr>
+<tr>
+<td bgcolor="$altbg1" width="21%">置顶级别：</td>
+<td bgcolor="$altbg2">
+$untop
+<input type="radio" name="level" value="1" $topcheck> <img src="$imgdir/star.gif"> &nbsp; &nbsp; 
+<input type="radio" name="level" value="2"> <img src="$imgdir/star.gif"><img src="$imgdir/star.gif"> &nbsp; &nbsp; 
+<input type="radio" name="level" value="3"> <img src="$imgdir/star.gif"><img src="$imgdir/star.gif"><img src="$imgdir/star.gif"></td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<input type="hidden" name="fid" value="$fid">
+<input type="hidden" name="tid" value="$tid">
+<center><input type="submit" name="topsubmit" value="$cdbaction"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|topicadmin_bump|#*CDB TEMPLATE*#|<form method="post" action="topicadmin.php?action=bump">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class ="header">
+<td colspan="2">提升主题</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名：</td>
+<td bgcolor="$altbg2">$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<input type="hidden" name="fid" value="$fid">
+<input type="hidden" name="tid" value="$tid">
+<center><input type="submit" name="bumpsubmit" value="提升主题"></center>
+</form>|#*CDB TEMPLATE FILE*#|topicadmin_split|#*CDB TEMPLATE*#|<form method="post" action="topicadmin.php?action=split">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td class="header" colspan="2">分割主题</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名</td>
+<td bgcolor="$altbg2">$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">新主题的标题：</td>
+<td bgcolor="$altbg2"><input type="text" name="subject" size="45"></td>
+</tr>
+
+<tr class="header">
+<td>分割</td>
+<td>内容</td>
+</tr>
+$posts
+</table>
+</td></tr></table><br>
+<input type="hidden" name="fid" value="$fid">
+<input type="hidden" name="tid" value="$tid">
+<center><input type="submit" name="splitsubmit" value="分割主题"></center>
+</form>|#*CDB TEMPLATE FILE*#|topicadmin_split_row|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1"><input type="checkbox" name="split$post[pid]" value="$post[pid]"></td>
+<td bgcolor="$altbg2"><font class="smalltxt"><span class="bold">$post[author]</span><br><br>$post[message]</font></td>
+</tr>|#*CDB TEMPLATE FILE*#|topicadmin_merge|#*CDB TEMPLATE*#|
+<form method="post" action="topicadmin.php?action=merge">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td class="header" colspan="2">合并主题</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">用户名：</td>
+<td bgcolor="$altbg2">$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">主题 tid：</td>
+<td bgcolor="$altbg2"><input type="text" name="othertid" size="10">
+&nbsp;&nbsp;&nbsp;即将与这个主题合并的 tid，如 viewthread.php?tid=48，tid 为 48</td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<input type="hidden" name="fid" value="$fid">
+<input type="hidden" name="tid" value="$tid">
+<center><input type="submit" name="mergesubmit" value="合并主题"></center>
+</form>|#*CDB TEMPLATE FILE*#|topicadmin_report|#*CDB TEMPLATE*#|
+<form method="post" name="input" action="topicadmin.php?action=report">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">向版主反应这个贴子</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" valign="top" width="19%">我对这个贴子有异议，我认为：</td>
+<td bgcolor="$altbg2"><textarea rows="9" cols="45" name="reason"></textarea>
+</tr>
+
+</table>
+</td></tr></table><br>
+<input type="hidden" name="tid" value="$tid">
+<input type="hidden" name="fid" value="$fid">
+<input type="hidden" name="pid" value="$pid">
+<center><input type="submit" name="reportsubmit" value="报告此贴"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|showmessage|#*CDB TEMPLATE*#|
+<table cellspacing="0" cellpadding="0" border="0" width="400" align="center">
+<tr><td bgcolor="$bordercolor"><table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header"><td>$bbname 提示</td></tr><tr><td bgcolor="$altbg2" align="center">
+<table border="0" width="90%" cellspacing="0" cellpadding="0"><tr><td width="100%" align="center">
+$show_message
+</td></tr></table></td></tr></table></td></tr></table><br><br>
+|#*CDB TEMPLATE FILE*#|forumdisplay_password|#*CDB TEMPLATE*#|<form method="post" action="$url">
+<table cellspacing="0" cellpadding="0" border="0" width="50%" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">本论坛需要密码，您必须在下面输入正确的密码才能浏览这个论坛。</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" align="center">密码：</td>
+<td bgcolor="$altbg2" align="center"><input type="password" name="pw" size="25"> <br></td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="loginsubmit" value="登录"></center>
+</form>
+|#*CDB TEMPLATE FILE*#|member_reg_rules|#*CDB TEMPLATE*#|<form name="bbrules" method="post" action="member.php?action=reg&referer=$referer">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td class="header">注册</td>
+</tr>
+
+<tr bgcolor="$altbg1">
+<td width="21%">$bbrulestxt</td>
+</tr>
+
+</table>
+</td></tr></table><br>
+<center>
+<input type="submit" name="rulesubmit" value="同  意" style="height: 23px">
+<input type="button" name="return" value="不同意" style="height: 23px" onclick="javascript:history.go(-1);">
+</form>
+</center>
+
+<script language="javascript">
+var secs = 9;
+var wait = secs * 1000;
+document.bbrules.rulesubmit.value = "同意(" + secs + ")";
+document.bbrules.rulesubmit.disabled = true;
+for(i = 1; i <= secs; i++) {
+        window.setTimeout("update(" + i + ")", i * 1000);
+}
+window.setTimeout("timer()", wait);
+function update(num, value) {
+        if(num == (wait/1000)) {
+                document.bbrules.rulesubmit.value = "同意";
+        } else {
+                printnr = (wait / 1000)-num;
+                document.bbrules.rulesubmit.value = "同意(" + printnr + ")";
+        }
+}
+function timer() {
+        document.bbrules.rulesubmit.disabled = false;
+        document.bbrules.rulesubmit.value = "同  意";
+}
+</script>
+|#*CDB TEMPLATE FILE*#|post_newpoll|#*CDB TEMPLATE*#|
+<script language="JavaScript" src="bbcode.js"></script>
+<script language="JavaScript">
+var postmaxchars = $maxpostsize;
+var isadmin = "$isadmin";
+function checklength(theform) {
+        if (postmaxchars != 0) { message = "系统允许：$maxpostsize 字符"; }
+        else { message = ""; }
+        alert("\n当前长度："+theform.message.value.length+" 字符\n\n"+message);
+}
+function validate(theform) {
+        if (theform.subject.value == "") {
+                alert("请完成标题和内容栏。");
+                return false; }
+        if (postmaxchars != 0 && isadmin != 1) {
+                if (theform.message.value.length > $maxpostsize) {
+                        alert("您的贴子长度超过限制\n\n当前长度："+theform.message.value.length+" 字符\n系统允许：$maxpostsize 字符");
+                        return false; }
+                else { return true; }
+        } else { return true; }
+}
+</script>
+$preview
+<form method="post" name="input" action="post.php?action=newthread&fid=$fid&poll=yes" $enctype onSubmit="return validate(this)">
+<input type="hidden" name="topicsubmit" value="submit">
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td colspan="2" class="header">发起投票</td>
+</tr>
+
+$loggedin
+
+<tr>
+<td bgcolor="$altbg1" width="20%">主题：</td>
+<td bgcolor="$altbg2"><input type="text" name="subject" size="45" value="$subject" tabindex="3"></td>
+</tr>
+<tr><td bgcolor="$altbg1">图标：</td><td bgcolor="$altbg2">$icons</td></tr>
+$bbcodeinsert
+<tr>
+<td bgcolor="$altbg1" valign="top">投票选项：<br>（每个选项一行，最多十行）</td>
+<td bgcolor="$altbg2"><textarea rows="4" cols="85" name="pollanswers" tabindex="5">$pollanswers</textarea></td>
+</tr>
+<tr>
+<td bgcolor="$altbg1" valign="top">贴子内容 <a href="javascript:checklength(document.input);">[字数检查]</a>：<br><br>
+html 状态 $allowhtml<br>
+Smilies 状态 $allowsmilies<br>
+<a href="faq.php?page=misc#1" target="_blank">Discuz! 代码</a> 状态 $allowbbcode<br>
+[img]代码状态 $allowimgcode
+<br><br><br><br>
+$smilieinsert
+</td>
+<td bgcolor="$altbg2">
+<textarea rows="18" cols="85" name="message" tabindex="5" onSelect="javascript: storeCaret(this);" onClick="javascript: storeCaret(this);" onKeyUp="javascript: storeCaret(this);" onKeyDown="javascript: ctlent();">$message</textarea>
+<br><br>
+<input type="checkbox" name="parseurloff" value="1"> 禁用 URL 识别<br>
+<input type="checkbox" name="smileyoff" value="1" $smileyoffcheck> 禁用 Smilies<br>
+<input type="checkbox" name="bbcodeoff" value="1" $codeoffcheck> 禁用 Discuz! 代码<br>
+<input type="checkbox" name="usesig" value="1" $usesigcheck> 使用个人签名<br>
+<input type="checkbox" name="emailnotify" value="1"> 接收新回复邮件通知
+$modoptions</td> 
+</tr>
+$attachfile
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="topicsubmit" value="发布投票" tabindex="6">
+<input type="submit" name="previewpost" value="预览投票" tabindex="7">
+</center>
+</form>
+|#*CDB TEMPLATE FILE*#|post_reply|#*CDB TEMPLATE*#|
+<script language="JavaScript" src="bbcode.js"></script>
+<script language="JavaScript">
+var postmaxchars = $maxpostsize;
+var isadmin = "$isadmin";
+function checklength(theform) {
+        if (postmaxchars != 0) { message = "系统允许：$maxpostsize 字符"; }
+        else { message = ""; }
+        alert("\n当前长度："+theform.message.value.length+" 字符\n\n"+message);
+}
+function validate(theform) {
+        if (theform.message.value == "" && theform.subject.value == "") {
+                alert("请完成标题或内容栏。");
+                return false; }
+        if (postmaxchars != 0 && isadmin != 1) {
+                if (theform.message.value.length > $maxpostsize) {
+                        alert("您的贴子长度超过限制\n\n当前长度："+theform.message.value.length+" 字符\n系统允许：$maxpostsize 字符");
+                        return false; }
+                else { return true; }
+        } else { return true; }
+}
+</script>
+$preview
+<form method="post" name="input" action="post.php?action=reply&fid=$fid&tid=$tid" $enctype onSubmit="return validate(this)">
+<input type="hidden" name="replysubmit" value="submit">
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td colspan="2" class="header">回复主题</td>
+</tr>
+
+$loggedin
+
+<tr>
+<td bgcolor="$altbg1" width="20%">主题：</td>
+<td bgcolor="$altbg2"><input type="text" name="subject" size="45" value="$subject" tabindex="3">&nbsp;&nbsp;(可选)</td>
+</tr>
+<tr><td bgcolor="$altbg1">图标：</td><td bgcolor="$altbg2">$icons</td></tr>
+$bbcodeinsert
+<tr>
+<td bgcolor="$altbg1" valign="top">贴子内容 <a href="javascript:checklength(document.input);">[字数检查]</a>：<br><br>
+html 状态 $allowhtml<br>
+Smilies 状态 $allowsmilies<br>
+<a href="faq.php?page=misc#1" target="_blank">Discuz! 代码</a> 状态 $allowbbcode<br>
+[img]代码 状态 $allowimgcode
+<br><br><br><br>
+$smilieinsert
+</td>
+
+<td bgcolor="$altbg2">
+<textarea rows="18" cols="85" name="message" tabindex="4" onSelect="javascript: storeCaret(this);" onClick="javascript: storeCaret(this);" onKeyUp="javascript: storeCaret(this);" onKeyDown="javascript: ctlent();">$message</textarea>
+<br><br>
+<input type="checkbox" name="parseurloff" value="1"> 禁用 URL 识别<br>
+<input type="checkbox" name="smileyoff" value="1" $smileyoffcheck> 禁用 Smilies<br>
+<input type="checkbox" name="bbcodeoff" value="1" $codeoffcheck> 禁用 Discuz! 代码<br>
+<input type="checkbox" name="usesig" value="1" $usesigcheck> 使用个人签名<br>
+<input type="checkbox" name="emailnotify" value="1"> 接收新回复邮件通知
+</td> 
+</tr>
+$attachfile
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="replysubmit" value="发表回复" tabindex="5">
+<input type="submit" name="previewpost" value="预览贴子" tabindex="6">
+</center>
+</form>
+
+<br>
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="1" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">主题回顾</td>
+</tr>
+$posts
+</table>
+</td></tr></table>|#*CDB TEMPLATE FILE*#|post_reply_review_post|#*CDB TEMPLATE*#|<tr bgcolor="$thisbg">
+<td rowspan="2" valign="top" width="20%"><span class="bold">$post[author]</span><br><br></td>
+<td>$post[icon] $poston</td></tr>
+<tr bgcolor="$thisbg"><td>
+<table height="100%" width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed; word-wrap: break-word">
+<tr><td><p>$post[message]</p><br></td></tr></table></td></tr>
+|#*CDB TEMPLATE FILE*#|post_reply_review_toolong|#*CDB TEMPLATE*#|<tr bgcolor="$altbg1">
+<td colspan="2" valign="top" width="20%">本主题回复较多，请 <a href="$threadlink">点击这里</a> 查看。</td></tr>
+|#*CDB TEMPLATE FILE*#|post_edit|#*CDB TEMPLATE*#|
+<script language="JavaScript" src="bbcode.js"></script>
+<script language="JavaScript">
+var postmaxchars = $maxpostsize;
+var isadmin = "$isadmin";
+function checklength(theform) {
+        if (postmaxchars != 0) { message = "系统允许：$maxpostsize 字符"; }
+        else { message = ""; }
+        alert("\n当前长度："+theform.message.value.length+" 字符\n\n"+message);
+}
+function validate(theform) {
+        if (theform.message.value == "" && theform.subject.value == "") {
+                alert("请完成标题或内容栏。");
+                return false; }
+        if (postmaxchars != 0 && isadmin != 1) {
+                if (theform.message.value.length > $maxpostsize) {
+                        alert("您的贴子长度超过限制\n\n当前长度："+theform.message.value.length+" 字符\n系统允许：$maxpostsize 字符");
+                        return false; }
+                else { return true; }
+        } else { return true; }
+}
+</script>
+$preview
+<form method="post" name="input" action="post.php?action=edit" $enctype onSubmit="return validate(this)">
+<input type="hidden" name="editsubmit" value="submit">
+<input type="hidden" name="page" value="$page">
+
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr>
+<td colspan="2" class="header">编辑贴子</td>
+</tr>
+$loggedin 
+$viewpermission
+<tr>
+<td bgcolor="$altbg1" width="20%">主题：</td>
+<td bgcolor="$altbg2">
+<input type="text" name="subject" size="45" value="$postinfo[subject]" tabindex="3">
+<input type="hidden" name="origsubject" value="$postinfo[subject]">
+</td></tr>
+
+<tr>
+<td bgcolor="$altbg1">图标：</td><td bgcolor="$altbg2">$icons</td>
+</tr>
+$bbcodeinsert
+<tr>
+<td bgcolor="$altbg1" valign="top">贴子内容 <a href="javascript:checklength(document.input);">[字数检查]</a>：<br><br>
+html 状态 $allowhtml<br>
+Smilies 状态 $allowsmilies<br>
+<a href="faq.php?page=misc#1" target="_blank">Discuz! 代码</a> 状态 $allowbbcode<br>
+[img]代码 状态 $allowimgcode
+<br><br><br><br>
+$smilieinsert
+</td>
+
+<td bgcolor="$altbg2">
+<textarea rows="18" cols="85" name="message" tabindex="4" onSelect="javascript: storeCaret(this);" onClick="javascript: storeCaret(this);" onKeyUp="javascript: storeCaret(this);" onKeyDown="javascript: ctlent();">$postinfo[message]</textarea>
+<br><br>
+<input type="checkbox" name="parseurloff" value="1" $urloffcheck> 禁用 URL 识别<br>
+<input type="checkbox" name="smileyoff" value="1" $smileyoffcheck> 禁用 Smilies<br>
+<input type="checkbox" name="bbcodeoff" value="1" $codeoffcheck> 禁用 Discuz! 代码<br>
+<input type="checkbox" name="usesig" value="1" $usesigcheck> 使用个人签名<br>
+<input type="checkbox" name="delete" value="1"> <b>!删除本贴</b></td>
+</tr>
+$attachfile
+</table>
+</td></tr></table><br>
+<input type="hidden" name="fid" value="$fid">
+<input type="hidden" name="tid" value="$tid">
+<input type="hidden" name="pid" value="$pid">
+<input type="hidden" name="postsubject" value="$postinfo[subject]">
+<center><input type="submit" name="editsubmit" value="编辑贴子" tabindex="5">
+<input type="submit" name="previewpost" value="预览贴子" tabindex="6"></center>
+</form>|#*CDB TEMPLATE FILE*#|post_bbcodeinsert|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1">Discuz! 代码辅助模式：<br>
+<input type="radio" name="mode" value="2" onclick="chmode('2')" checked> 提示插入<br>
+<input type="radio" name="mode" value="0" onclick="chmode('0')"> 直接插入<br>
+<input type="radio" name="mode" value="1" onclick="chmode('1')"> 帮助信息</td>
+<td bgcolor="$altbg2">
+<select name="font" onChange="chfont(this.options[this.selectedIndex].value)" size="1">
+  <option value="宋体">宋体</option>
+  <option value="黑体">黑体</option>
+  <option value="Arial">Arial</option>
+  <option value="Book Antiqua">Book Antiqua</option>
+  <option value="Century Gothic">Century Gothic</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Georgia">Georgia</option>
+  <option value="Impact">Impact</option>
+  <option value="Tahoma">Tahoma</option>
+  <option value="Times New Roman">Times New Roman</option>
+  <option value="Verdana" selected>Verdana</option></select>
+<select name="size" onChange="chsize(this.options[this.selectedIndex].value)" size="1">
+  <option value="-2">-2</option>
+  <option value="-1">-1</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3" selected>3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option></select>
+ <select name="color" onChange="chcolor(this.options[this.selectedIndex].value)" size="1">
+  <option value="White" style="color:white;">White</option>
+  <option value="Black" style="color:black;">Black</option>
+  <option value="Red" style="color:red;">Red</option>
+  <option value="Yellow" style="color:yellow;">Yellow</option>
+  <option value="Pink" style="color:pink;">Pink</option>
+  <option value="Green" style="color:green;">Green</option>
+  <option value="Orange" style="color:orange;">Orange</option>
+  <option value="Purple" style="color:purple;">Purple</option>
+  <option value="Blue" style="color:blue;">Blue</option>
+  <option value="Beige" style="color:beige;">Beige</option>
+  <option value="Brown" style="color:brown;">Brown</option>
+  <option value="Teal" style="color:teal;">Teal</option>
+  <option value="Navy" style="color:navy;">Navy</option>
+  <option value="Maroon" style="color:maroon;">Maroon</option>
+  <option value="LimeGreen" style="color:limegreen;">LimeGreen</option></select>
+<br><br>
+<a href="javascript:bold()"><img src="$imgdir/bb_bold.gif" border="0" width="23" height="22" alt="插入粗体文本"></a>
+<a href="javascript:italicize()"><img src="$imgdir/bb_italicize.gif" border="0" width="23" height="22" alt="插入斜体文本"></a>
+<a href="javascript:underline()"><img src="$imgdir/bb_underline.gif" border="0" width="23" height="22" alt="插入下划线"></a>
+<a href="javascript:center()"><img src="$imgdir/bb_center.gif" border="0" width="23" height="22" alt="居中对齐"></a>
+<a href="javascript:hyperlink()"><img src="$imgdir/bb_url.gif" border="0" width="23" height="22" alt="插入超级链接"></a>
+<a href="javascript:email()"><img src="$imgdir/bb_email.gif" border="0" width="23" height="22" alt="插入邮件地址"></a>
+<a href="javascript:image()"><img src="$imgdir/bb_image.gif" border="0" width="23" height="22" alt="插入图像"></a>
+<a href="javascript:flash()"><img src="$imgdir/bb_flash.gif" border="0" width="23" height="22" alt="插入 flash"></a>
+<a href="javascript:code()"><img src="$imgdir/bb_code.gif" border="0" width="23" height="22" alt="插入代码"></a>
+<a href="javascript:quote()"><img src="$imgdir/bb_quote.gif" border="0" width="23" height="22" alt="插入引用"></a>
+<a href="javascript:list()"><img src="$imgdir/bb_list.gif" border="0" width="23" height="22" alt="插入列表"></a>
+</td></tr>
+|#*CDB TEMPLATE FILE*#|post_smilieinsert|#*CDB TEMPLATE*#|
+<table cellpadding="3" cellspacing="1" border="0" bgcolor="$altbg1" style="border-width: 2px; border-style: outset" align="center">
+<tr>
+<td colspan="$smcols" align="center" bgcolor="$altbg1" style="border-width:1px; border-style:inset">表情符号</td>
+</tr>
+<tr align='center'>
+$smilies
+</tr></table>
+|#*CDB TEMPLATE FILE*#|footer|#*CDB TEMPLATE*#|<br>
+<table cellspacing="0" cellpadding="1" border="0" width="$tablewidth" align="center" bgcolor="$bordercolor"> 
+<tr><td><table width="100%" cellspacing="0" cellpadding="2" bgcolor="$altbg1" style="table-layout: fixed">
+<tr><td class="nav" width="90%" nowrap>&nbsp;<a href="index.php">$bbname</a> $navigation</td>
+<td align="right" width="10%"><a href="#top"><img src="$imgdir/arrow_up.gif" border="0"></a></td>        
+</tr></table></td></tr></table>
+
+<br><br><center><span class="mediumtxt">
+&lt; <a href="mailto:$adminemail" class="mediumtxt">联系我们</a> - <a href="$siteurl" class="mediumtxt" target="_blank">$sitename</a> &gt;</span>
+<br><br><br><font style="font-size: 11px; font-family: Tahoma, Arial">
+Powered by <a href="http://www.Discuz.net" style="color: $text" target="_blank"><b>Discuz!</b> $version</a>
+&copy; 2002, <b><a href="http://www.crossday.com" target="_blank" style="color: $text">Crossday Studio</a></b> of <b><a href="http://11cn.org" target="_blank" style="color: $text">11cn.org</a></b>
+$debuginfo</font></center>
+<a name="bottom"></a>
+
+</body></html>
+|#*CDB TEMPLATE FILE*#|post_attachmentbox|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1" $valign>附件 (小于 $maxattachsize_kb kb)：</td>
+<td bgcolor="$altbg2">$setattachperm<input type="file" name="attach" size="20">$allowattachextensions</td>
+</tr>
+|#*CDB TEMPLATE FILE*#|post_viewpermission|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1">浏览所需{$credittitle}：</td>
+<td bgcolor="$altbg2"><input type="text" name="viewperm" size="6" value="$currcredits"> $creditunit (0 为不限制)</td>
+</tr>
+|#*CDB TEMPLATE FILE*#|post_edit_attachmentbox_edit|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1" $valign>附件 (小于 $maxattachsize_kb kb)：</td>
+<td bgcolor="$altbg2">目前附件：$attachicon <a href="viewthread.php?action=attachment&aid=$postinfo[aid]" target="_blank">$postattach[filename]</a> ($attachsize ，已被下载 $postattach[downloads] 次)<br>
+<input type="radio" checked name="attachedit" value="" onclick="this.form.attach.disabled=this.form.attachperm.disabled=this.checked;this.form.origattachperm.disabled=!this.checked"> 保留附件 $setorigattachperm<br>
+<input type="radio" name="attachedit" value="delete" onclick="this.form.origattachperm.disabled=this.form.attach.disabled=this.form.attachperm.disabled=this.checked"> 删除附件<br>
+<input type="radio" name="attachedit" value="new" onclick="this.form.origattachperm.disabled=this.checked;this.form.attachperm.disabled=this.form.attach.disabled=!this.checked"> 上传新附件 $setattachperm<input type="file" name="attach" size="20" disabled>$allowattachextensions
+</tr>
+|#*CDB TEMPLATE FILE*#|post_edit_attachmentbox|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1" $valign>附件 (小于 $maxattachsize_kb kb)：</td>
+<td bgcolor="$altbg2"><input type="hidden" name="attachedit" value="new">
+$setattachperm<input type="file" name="attach" size="20">$allowattachextensions</td>
+</tr>
+|#*CDB TEMPLATE FILE*#|post_notloggedin|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1">用户名：</td>
+<td bgcolor="$altbg2"><input type="text" name="username" tabindex="1" size="25" maxlength="25" value="$username"> &nbsp;<a href="member.php?action=reg">立即注册</a></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">密码：</td>
+<td bgcolor="$altbg2"><input type="password" name="password" tabindex="2" size="25" value="$password"> &nbsp;<a href="misc.php?action=lostpw">取回密码</a></td>
+</tr>
+|#*CDB TEMPLATE FILE*#|post_loggedin|#*CDB TEMPLATE*#|<tr>
+<td bgcolor="$altbg1">用户名：</td>
+<td bgcolor="$altbg2">$cdbuserss  [<a href="member.php?action=logout">退出登录</a>]</td>
+</tr>
+|#*CDB TEMPLATE FILE*#|topicadmin_emailfriend|#*CDB TEMPLATE*#|
+<form method="post" action="topicadmin.php?action=emailfriend">
+<table cellspacing="0" cellpadding="0" border="0" width="$tablewidth" align="center">
+<tr><td bgcolor="$bordercolor">
+
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header">
+<td colspan="2">推荐给朋友</td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1" width="21%">您的名字</td>
+<td bgcolor="$altbg2"><input type="text" name="fromname" size="25" maxlength="40" value="$cdbuserss"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">您的 Email：</td>
+<td bgcolor="$altbg2"><input type="text" name="fromemail" size="25" value="$this[email]"></td>
+</tr>
+
+<tr>
+<td bgcolor="$altbg1">接收人姓名：</td>
+<td bgcolor="$altbg2"><input type="text" name="sendtoname" size="25" value=""></td>
+</tr>
+<tr>
+<td bgcolor="$altbg1">接收人 Email：</td>
+<td bgcolor="$altbg2"><input type="text" name="sendtoemail" size="25" value=""></td>
+</tr>
+<tr>
+<td bgcolor="$altbg1">主题：</td>
+<td bgcolor="$altbg2"><input type="text" name="subject" size="65" value="推荐：$thread[subject]"></td>
+</tr>
+<tr>
+<td bgcolor="$altbg1" valign="top">消息：</td>
+<td bgcolor="$altbg2"><textarea rows="9" cols="65" name="message">
+你好！我在 $bbname($boardurl)
+看到了这篇贴子，认为很有价值，特推荐给你。
+
+地址 $threadurl
+
+希望你能喜欢。
+</textarea></td>
+</tr>
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="sendsubmit" value="发  送"></center>
+<input type="hidden" name="tid" value="$tid">
+</form>
+|#*CDB TEMPLATE FILE*#|index_news|#*CDB TEMPLATE*#|
+<table border="0" cellspacing="0" cellpadding="0" width="$tablewidth" bgcolor="$bordercolor" align="center">
+<tr><td>
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header"><td colspan="3">$bbname 滚动新闻</td></tr>
+<tr bgcolor="$altbg2">
+<td colspan="3" align="center">
+<script language="JavaScript">
+var delay = 3;
+var bcolor = "$altbg2";
+var tcolor = "$tabletext";
+var fcontent = new Array();
+begintag = '';
+$index_news_row
+closetag = '';
+</script>
+<script language="JavaScript" src="newsfader.js"></script>
+</td></tr></table>
+</td></tr></table>
+|#*CDB TEMPLATE FILE*#|forumdisplay_whosonline|#*CDB TEMPLATE*#|
+<table border="0" cellspacing="0" cellpadding="0" width="$tablewidth" bgcolor="$bordercolor" align="center">
+<tr><td>
+<table border="0" cellspacing="$borderwidth" cellpadding="$tablespace" width="100%">
+<tr class="header"><td width="92%">正在浏览此论坛的会员</td><td width="8%" align="center" nowrap><a href="javascript: this.location.reload();"><font class="navtd" style="font-weight: normal">刷 新</font></a></td></tr>
+<tr bgcolor="$altbg2">
+<td colspan="2">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" align="center">
+<!-- <tr><td colspan="6"><img src="$imgdir/online_admin.gif"> 论坛管理员 &nbsp; &nbsp; &nbsp;<img src="$imgdir/online_moderator.gif"> 版主 &nbsp; &nbsp; &nbsp;<img src="$imgdir/online_member.gif"> 会员 &nbsp; &nbsp; &nbsp;<img src="$imgdir/online_guest.gif"> 游客</td></tr> -->
+$memberlist
+</table></td></tr></table></td></tr></table>
+<br>
+|#*CDB TEMPLATE FILE*#|viewthread_printable_attachmentimage|#*CDB TEMPLATE*#|<br><br>$attachicon 本贴包含图片附件 &nbsp;URL {$boardurl}viewthread.php?action=attachment&aid=$postattach[aid]<br><br><a href="$attachurl/$postattach[attachment]" target="_blank"><img src="$attachurl/$postattach[attachment]" border="0" alt="点击查看全图" onload="javascript:if(this.width>screen.width-200) this.width=screen.width-50"></a>
+|#*CDB TEMPLATE FILE*#|viewthread_post_attachment|#*CDB TEMPLATE*#|<br><br>$attachicon 附件：<a href="viewthread.php?action=attachment&aid=$postattach[aid]" target="_blank">$postattach[filename]</a> ($attachsize)<br><font class="smalltxt">该附件已经被下载 $postattach[downloads] 次$creditrequire</font><br>
+|#*CDB TEMPLATE FILE*#|viewthread_printable_attachment|#*CDB TEMPLATE*#|<br><br>$attachicon 附件：$postattach[filename] (大小 $attachsize / 下载 $postattach[downloads] 次$creditsrequire)<br>URL {$boardurl}viewthread.php?action=attachment&aid=$postattach[aid]<br>
+|#*CDB TEMPLATE FILE*#|viewthread_post_attachmentimage|#*CDB TEMPLATE*#|<br><br>$attachicon 本贴包含图片附件：<br><br><a href="$attachurl/$postattach[attachment]" target="_blank"><img src="$attachurl/$postattach[attachment]" border="0" alt="点击查看全图" onload="javascript:if(this.width>screen.width-200) this.width=screen.width-200"></a>
+|#*CDB TEMPLATE FILE*#|viewthread_post_attachmentswf|#*CDB TEMPLATE*#|<br><br>$attachicon 本贴包含 flash 附件：<br><br><embed width="400" height="300" src="$attachurl/$postattach[attachment]" type="application/x-shockwave-flash"></embed>
+|#*CDB TEMPLATE FILE*#|viewthread_post_sig|#*CDB TEMPLATE*#|</td></tr><tr><td valign="bottom"><hr noshade size="0" width="50%" color="$sigline" align="left">$post[signature]
+|#*CDB TEMPLATE FILE*#|forumdisplay_newtopic|#*CDB TEMPLATE*#|<a href="post.php?action=newthread&fid=$fid"><img src="$imgdir/newtopic.gif" border="0"></a>
+|#*CDB TEMPLATE FILE*#|forumdisplay_newpoll|#*CDB TEMPLATE*#| � <a href="post.php?action=newthread&fid=$fid&poll=yes"><img src="$imgdir/poll.gif" border="0"></a>
+|#*CDB TEMPLATE FILE*#|index_forum_lastpost|#*CDB TEMPLATE*#|<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr><td align="right" nowrap><font class="smalltxt">$lastpost</font></td>
+<td nowrap>&nbsp;<a href="viewthread.php?goto=lastpost&fid=$forum[fid]"><img src="$imgdir/lastpost.gif" border="0"></a></td>
+</tr></table>
+|#*CDB TEMPLATE FILE*#|forumdisplay_thread_lastpost|#*CDB TEMPLATE*#|<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr align="right">
+<td nowrap><font class="smalltxt">$lastpost</font></td>
+<td nowrap>&nbsp;<a href="viewthread.php?goto=lastpost&tid=$thread[tid]$highlight"><img src="$imgdir/lastpost.gif" border="0"></a></td>
+</tr></table>
+|#*CDB TEMPLATE FILE*#|memcp_home_subs_none|#*CDB TEMPLATE*#|
+<tr><td bgcolor="$altbg1" colspan="6">目前没有被收藏的主题。</td></tr>
+|#*CDB TEMPLATE FILE*#|memcp_home_subs_row|#*CDB TEMPLATE*#|
+<tr><td bgcolor="$altbg1" width="5%" align="center">$sub[icon]</td>
+<td bgcolor="$altbg2" onMouseOver ="this.style.backgroundColor='$altbg1'" onMouseOut ="this.style.backgroundColor='$altbg2'"><a href="viewthread.php?tid=$sub[tid]">$sub[subject]</a></td>
+<td bgcolor="$altbg1" align="center"><a href="forumdisplay.php?fid=$sub[fid]">$sub[name]</a></td>
+<td bgcolor="$altbg2" align="center">12</td>
+<td bgcolor="$altbg1" align="center"><font class="smalltxt">$lastpost</font></td>
+</tr>
+|#*CDB TEMPLATE FILE*#|cdb_version|#*CDB TEMPLATE*#|1.0
+|#*CDB TEMPLATE FILE*#|
